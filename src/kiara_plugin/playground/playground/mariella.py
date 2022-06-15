@@ -1,4 +1,5 @@
 from kiara import KiaraModule
+from kiara.exceptions import KiaraProcessingException
 import pandas as pd
 import re
 import csv
@@ -37,21 +38,22 @@ class FileNameMetadata(KiaraModule):
     def process(self, inputs, outputs) -> None:
 
         table_obj = inputs.get_value_obj("table_input")
-        column_name = inputs.get_value_obj("column_name")
-
-        print(column_name.data)
-        
+        column_name = inputs.get_value_obj("column_name").data
 
         df = table_obj.data.to_pandas()
 
          # get publication ref from file name
         def get_ref(file):
             ref_match = re.findall(r'(\w+\d+)_\d{4}-\d{2}-\d{2}_',file)
+            if not ref_match:
+                raise KiaraProcessingException(f"Can't process corpus, invalid format for file name: {file}")
             return ref_match[0]
 
         # get date from file name
         def get_date(file):
             date_match = re.findall(r'_(\d{4}-\d{2}-\d{2})_',file)
+            if not date_match:
+                raise KiaraProcessingException(f"Can't process corpus, invalid format for file name: {file}")
             return date_match[0]
         
         df['date'] = df['file_name'].apply(lambda x: get_date(x))
@@ -67,9 +69,3 @@ class FileNameMetadata(KiaraModule):
         outputs.set_value("table_output", df)
         outputs.set_value("publications_ref", publications)
         outputs.set_value("publications_count", publications)
-
-        
-        
-
-
-
