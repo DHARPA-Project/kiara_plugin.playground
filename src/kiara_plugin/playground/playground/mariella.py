@@ -2,7 +2,6 @@ from kiara import KiaraModule
 from kiara.exceptions import KiaraProcessingException
 import pandas as pd
 import re
-import csv
 
 class FileNameMetadata(KiaraModule):
 
@@ -15,7 +14,7 @@ class FileNameMetadata(KiaraModule):
             },
             "column_name": {
                 "type": "string",
-                "doc": "The column containing metadata with LCCN pattern, like: '/sn86069873/1900-01-05/'."
+                "doc": "The column containing metadata. In order to work, file names need to comply with LCCN pattern '/sn86069873/1900-01-05/' containing publication reference and date."
             }
         }
 
