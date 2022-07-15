@@ -67,4 +67,54 @@ class FileNameMetadata(KiaraModule):
 
         outputs.set_value("table_output", df)
         outputs.set_value("publications_ref", publications)
-        outputs.set_value("publications_count", publications)
+        outputs.set_value("publications_count", counts)
+
+
+
+class MapColumn(KiaraModule):
+
+    def create_inputs_schema(self):
+        
+        return {
+            "table_input": {
+                "type": "table",
+                "doc": "The table that we need to augment by mapping column values (for example an id with a name) in a new column."
+            },
+            "column_name": {
+                "type": "string",
+                "doc": "The column that needs mapping."
+            },
+            "mapping_keys": {
+                "type": "list",
+                "doc": "list containing 2 lists: 1st list contains values to replace, and the second the ones they should be replaced with."
+            },
+            "output_col_name": {
+                "type": "string",
+                "doc": "name of the newly created column"
+            }
+        }
+
+    def create_outputs_schema(self):
+        return {
+            "table_output": {
+                "type": "table",
+                "doc": "Augmented table containing new column with mapped values."
+            }
+        }
+
+    def process(self, inputs, outputs) -> None:
+
+        table_obj = inputs.get_value_obj("table_input")
+        column_name = inputs.get_value_obj("column_name").data
+        mapping_keys = inputs.get_value_obj("mapping_keys").data
+        output_col_name = inputs.get_value_obj("output_col_name").data
+
+        df = table_obj.data.to_pandas()
+
+        df[output_col_name] = df[column_name].replace(to_replace=mapping_keys[0], value=mapping_keys[1])
+
+
+        outputs.set_value("table_output", df)
+
+
+
