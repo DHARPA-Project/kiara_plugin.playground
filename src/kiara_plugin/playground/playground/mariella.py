@@ -117,4 +117,67 @@ class MapColumn(KiaraModule):
         outputs.set_value("table_output", df)
 
 
+class TableSample(KiaraModule):
+
+    def create_inputs_schema(self):
+        
+        return {
+            "table_input": {
+                "type": "table",
+                "doc": "The table for which we need to create a sample, in order to test the results on a small portion of a table."
+            }
+        }
+
+    def create_outputs_schema(self):
+        return {
+            "table_sample": {
+                "type": "table",
+                "doc": "Random sample of 20 rows for the input table."
+            }
+        }
+
+    def process(self, inputs, outputs) -> None:
+
+        table_obj = inputs.get_value_obj("table_input")
+        df = table_obj.data.to_pandas()
+        df_sample = df.sample(n=15)
+        outputs.set_value("table_sample", df_sample)
+
+
+class AddColumn(KiaraModule):
+
+    def create_inputs_schema(self):
+        
+        return {
+            "table_input": {
+                "type": "table",
+                "doc": "The table to which we need to append a column."
+            },
+            "array_input": {
+                "type": "array",
+                "doc": "The array that needs to be appended as a column."
+            }
+        }
+
+    def create_outputs_schema(self):
+        return {
+            "preprocessed_tokens": {
+                "type": "table",
+                "doc": "The table with the additional column."
+            }
+        }
+
+    def process(self, inputs, outputs) -> None:
+
+        table_obj = inputs.get_value_obj("table_input")
+        array_obj = inputs.get_value_obj("array_input")
+        
+        df = table_obj.data.to_pandas()
+        col = array_obj.data.to_pylist()
+
+        df['preprocessed_tokens'] = col
+        
+        outputs.set_value("preprocessed_tokens", df)
+
+
 

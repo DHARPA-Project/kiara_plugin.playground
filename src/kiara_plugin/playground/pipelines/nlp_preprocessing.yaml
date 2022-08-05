@@ -1,0 +1,24 @@
+pipeline_name: "tm_preprocessing_step"
+doc: |
+  Pre-processing steps before applying LDA.
+steps:
+- module_type: table.cut_column
+  step_id: get_column
+- module_type: tokenize.texts_array
+  step_id: tokenization
+  input_links: 
+    texts_array: get_column.array
+- module_type: create.stopwords_list
+  step_id: stopwords
+- module_type: preprocess.tokens_array
+  step_id: preprocessing
+  input_links:
+    tokens_array: tokenization.tokens_array
+    remove_stopwords: stopwords.stopwords_list
+- module_type: kiara_plugin.playground.playground.mariella.add_column
+  step_id: reassemble_column
+  input_links:
+    array_input: preprocessing.tokens_array
+
+
+
