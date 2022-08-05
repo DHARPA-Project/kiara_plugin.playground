@@ -2,6 +2,7 @@ from kiara import KiaraModule
 from kiara.exceptions import KiaraProcessingException
 import pandas as pd
 import re
+import pyarrow as pa
 
 class FileNameMetadata(KiaraModule):
 
@@ -132,16 +133,19 @@ class TableSample(KiaraModule):
         return {
             "table_sample": {
                 "type": "table",
-                "doc": "Random sample of 20 rows for the input table."
+                "doc": "Random sample of 15 rows for the input table."
             }
         }
 
     def process(self, inputs, outputs) -> None:
 
         table_obj = inputs.get_value_obj("table_input")
-        df = table_obj.data.to_pandas()
-        df_sample = df.sample(n=15)
-        outputs.set_value("table_sample", df_sample)
+        
+        df = table_obj.data.to_pandas() 
+        df_sample = df.sample(n=15,axis=0)
+        df_sample = df_sample.drop(['__index_level_0__'],axis=1)
+        table_pa = pa.Table.from_pandas(df_sample)
+        outputs.set_value("table_sample", table_pa)
 
 
 class AddColumn(KiaraModule):
