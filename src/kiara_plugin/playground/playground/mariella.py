@@ -143,7 +143,8 @@ class TableSample(KiaraModule):
         
         df = table_obj.data.to_pandas() 
         df_sample = df.sample(n=15,axis=0)
-        df_sample = df_sample.drop(['__index_level_0__'],axis=1)
+        if '__index_level_0__' in df_sample.columns:
+            df_sample = df_sample.drop(['__index_level_0__'],axis=1)
         table_pa = pa.Table.from_pandas(df_sample)
         outputs.set_value("table_sample", table_pa)
 
