@@ -63,3 +63,6 @@ onefile.spec
 *_complete.zsh.zwc
 ci/conda/**/build
 ci/conda/kiara_plugin.playground/meta.yaml
+
+# example dataset
+examples/data/

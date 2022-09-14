@@ -1,0 +1,10 @@
+pipeline_name: "tm_metadata"
+doc: |
+  Add metadata from file name
+steps:
+  - module_type: kiara_plugin.playground.playground.mariella.file_name_metadata
+    step_id: add_metadata
+    # input_links:
+    # table_input: tm_onboarding.corpus_table
+  - module_type: kiara_plugin.playground.playground.mariella.map_column
+    step_id: add_publication_name

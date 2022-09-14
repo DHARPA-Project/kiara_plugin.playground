@@ -1,0 +1,14 @@
+pipeline_name: "tm_onboarding"
+doc: |
+  Onboarding a corpus of documents.
+steps:
+  - module_type: import.file_bundle
+    step_id: import_text_corpus
+  - module_type: create.table.from.text_file_bundle
+    step_id: create_text_corpus
+    input_links:
+      text_file_bundle: import_text_corpus.file_bundle
+input_aliases:
+    import_text_corpus.path: folder_path
+output_aliases:
+    create_text_corpus.table: corpus_table
