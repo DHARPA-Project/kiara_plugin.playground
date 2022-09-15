@@ -1,0 +1,16 @@
+pipeline_name: "tm_prep_viz_data"
+doc: |
+  Timestamped corpus visualization data preparation.
+steps:
+  - module_type: kiara_plugin.playground.playground.mariella.viz_data_query
+    step_id: query_prep
+  - module_type: query.table
+    step_id: query_process
+    input_links:
+      query: query_prep.query
+input_aliases:
+    query_prep.query_type: query_type
+    query_prep.column: column
+    query_process.table: table
+output_aliases:
+    query_process.query_result: output_table

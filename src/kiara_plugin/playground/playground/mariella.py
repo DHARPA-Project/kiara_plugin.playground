@@ -28,11 +28,11 @@ class FileNameMetadata(KiaraModule):
             "publications_ref": {
                 "type": "list",
                 "doc": "List of unique publications refs in table."
-            },
-            "publications_count": {
-                "type": "list",
-                "doc": "Count of unique publications refs in table."
-            }
+             },
+            # "publications_count": {
+            #     "type": "list",
+            #     "doc": "Count of unique publications refs in table."
+            # }
         }
 
     def process(self, inputs, outputs) -> None:
@@ -64,11 +64,12 @@ class FileNameMetadata(KiaraModule):
         df = df.sort_values(by='date')
 
         publications = df['publication'].unique().tolist()
-        counts = [df['publication'].value_counts().index.to_list(),df['publication'].value_counts().to_list()]
+        # counts = [df['publication'].value_counts().index.to_list(),df['publication'].value_counts().to_list()]
 
         outputs.set_value("table_output", df)
+        # unique publications references useful at the next step to map publications references with publications names
         outputs.set_value("publications_ref", publications)
-        outputs.set_value("publications_count", counts)
+        # outputs.set_value("publications_count", counts)
 
 
 
@@ -183,6 +184,46 @@ class AddColumn(KiaraModule):
         df['preprocessed_tokens'] = col
         
         outputs.set_value("preprocessed_tokens", df)
+
+
+class VizDataQuery(KiaraModule):
+
+    def create_inputs_schema(self):
+        
+        return {
+            "query_type": {
+                "type": "string",
+                "doc": "The wished data periodicity to display on visualization."
+            },
+            "column": {
+                "type": "string",
+                "doc": "The column that contains publication names or ref/id."
+            }
+        }
+
+    def create_outputs_schema(self):
+        return {
+            "query": {
+                "type": "string",
+                "doc": "The query to pass to the sql query module."
+            }
+        }
+
+    def process(self, inputs, outputs) -> None:
+
+        agg = inputs.get_value_obj("query_type").data
+        col = inputs.get_value_obj("column").data
+
+        if agg == 'month':
+            query = f"SELECT strptime(concat(month, '/', year), '%m/%Y') as date, {col} as publication_name, count FROM (SELECT YEAR(date) as year, MONTH(date) as month, {col}, count(*) as count FROM data GROUP BY {col}, YEAR(date), MONTH(date))"
+    
+        elif agg == 'year':
+            query = f"SELECT strptime(year, '%Y') as date, {col} as publication_name, count FROM (SELECT YEAR(date) as year, {col}, count(*) as count FROM data GROUP BY {col}, YEAR(date))"
+        
+        elif agg == 'day':
+            query = f"SELECT strptime(concat('01/', month, '/', year), '%d/%m/%Y') as date, {col} as publication_name, count FROM (SELECT YEAR(date) as year, MONTH(date) as month, {col}, count(*) as count FROM data GROUP BY {col}, YEAR(date), MONTH(date), DAY(date))"
+        
+        outputs.set_value("query", query)
 
 
 
