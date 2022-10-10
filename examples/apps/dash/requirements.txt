@@ -1,0 +1,13 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: osx-64
+dash=2.6.2=pypi_0
+dash-core-components=2.0.0=pypi_0
+dash-html-components=2.0.0=pypi_0
+dash-table=5.0.0=pypi_0
+duckdb=0.5.1=pypi_0
+kiara=0.4.21=py39_0
+kiara_plugin.core_types=0.4.11=py39_0
+kiara_plugin.language_processing=0.4.6=py39_0
+kiara_plugin.network_analysis=0.4.4=py39_0
+kiara_plugin.tabular=0.4.14=py39_0

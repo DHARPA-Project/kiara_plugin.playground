@@ -1,0 +1,22 @@
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif !important;
+}
+
+.cell-table, .dash-cell {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif !important;
+    font-size: .8em;
+    line-height: 2px;
+    white-space: 'normal';
+    height: 'auto';
+}
+
+.input-group {
+    padding-bottom: 1em;
+}
+
+h2 {
+    font-weight: 300;
+    line-height: 1.2;
+    font-size: 1.5rem;
+}
