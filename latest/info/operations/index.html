@@ -322,6 +322,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kiara_info.operations.create.cut_point_list" class="md-nav__link">
+    create.cut_point_list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_info.operations.create.degree_rank_list" class="md-nav__link">
     create.degree_rank_list
   </a>
@@ -809,6 +816,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kiara_info.operations.create.cut_point_list" class="md-nav__link">
+    create.cut_point_list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_info.operations.create.degree_rank_list" class="md-nav__link">
     create.degree_rank_list
   </a>
@@ -999,6 +1013,72 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 <td>network_result</td>
 <td>table</td>
 <td>A table showing the rank and raw score for closeness centrality.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.create.cut_point_list"><code>create.cut_point_list</code><a class="headerlink" href="#kiara_info.operations.create.cut_point_list" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Create a list of nodes that are cut-points.</p>
+<p>Cut-points are any node in a network whose removal disconnects members of the network, creating one or more new distinct components.</p>
+<p>Uses networkx.articulation_points()
+https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.components.articulation_points.html</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_data</td>
+<td>network_data</td>
+<td>The network graph being queried.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_result</td>
+<td>list</td>
+<td>A list of all nodes that are cut-points.</td>
 <td>yes</td>
 <td></td>
     </tr>
