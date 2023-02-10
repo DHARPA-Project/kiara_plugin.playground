@@ -2,10 +2,7 @@
 import typing
 
 import networkx as nx
-from kiara import KiaraModule
-from kiara.data.values import ValueSchema
-from kiara.data.values.value_set import ValueSet
-from kiara.module_config import ModuleTypeConfigSchema
+from kiara import KiaraModule, ValueSchema, KiaraModuleConfig, ValueMap
 from networkx import Graph
 from pydantic import Field
 
@@ -16,7 +13,7 @@ KIARA_METADATA = {
 # Here comes my attempt at building a find largest component module. Maybe need to add config for setting graph type as in CreateGraphFromEdgesTableModule
 
 
-class FindLargestComponentsModuleConfig(ModuleTypeConfigSchema):
+class FindLargestComponentsModuleConfig(KiaraModuleConfig):
 
     find_largest_component: bool = Field(
         description="Find the largest component of a graph.", default=True
@@ -62,7 +59,7 @@ class GraphComponentsModule(KiaraModule):
 
         return result
 
-    def process(self, inputs: ValueSet, outputs: ValueSet) -> None:
+    def process(self, inputs: ValueMap, outputs: ValueMap) -> None:
 
         if self.get_config_value("find_largest_component"):
             input_graph: Graph = inputs.get_value_data("graph")

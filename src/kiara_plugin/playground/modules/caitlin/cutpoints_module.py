@@ -1,8 +1,8 @@
 from kiara import KiaraModule
-import csv
 import networkx as nx
-from kiara.models.values.value import ValueMap, ValueMapWritable
-​
+from kiara_plugin.network_analysis.models import NetworkData
+
+
 class CutPointsList(KiaraModule):
     """Create a list of nodes that are cut-points.
     Cut-points are any node in a network whose removal disconnects members of the network, creating one or more new distinct components.
@@ -40,3 +40,4 @@ class CutPointsList(KiaraModule):
         cutpoints = list(nx.articulation_points(G))
 
         outputs.set_value('network_result', cutpoints)
+

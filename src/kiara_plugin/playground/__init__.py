@@ -36,7 +36,7 @@ KIARA_METADATA = {
 
 find_modules: KiaraEntryPointItem = (
     find_kiara_modules_under,
-    "kiara_plugin.playground.playground",
+    "kiara_plugin.playground.modules",
 )
 find_model_classes: KiaraEntryPointItem = (
     find_kiara_model_classes_under,

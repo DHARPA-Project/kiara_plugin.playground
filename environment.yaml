@@ -1,0 +1,7 @@
+name: kiara-playground
+channels:
+  - conda-forge
+  - dharpa
+dependencies:
+  - python ==3.10
+  - kiara>=0.4.31
