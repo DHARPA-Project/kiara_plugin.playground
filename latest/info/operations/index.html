@@ -343,6 +343,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kiara_info.operations.get.network_info" class="md-nav__link">
+    get.network_info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.add_column" class="md-nav__link">
     kiara_plugin.playground.modules.mariella.add_column
   </a>
@@ -837,6 +844,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kiara_info.operations.get.network_info" class="md-nav__link">
+    get.network_info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.add_column" class="md-nav__link">
     kiara_plugin.playground.modules.mariella.add_column
   </a>
@@ -1218,6 +1232,77 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 <td>network_result</td>
 <td>table</td>
 <td>A table showing the rank and raw score for eigenvector centrality.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.get.network_info"><code>get.network_info</code><a class="headerlink" href="#kiara_info.operations.get.network_info" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Return basic information for the newtork graph created, including number of nodes and edges.</p>
+<p>Needs to specify if graph is directed or undirected, but will default to undirected.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_data</td>
+<td>network_data</td>
+<td>The network graph being queried.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>graph_type</td>
+<td>string</td>
+<td>The graph type: directed or undirected</td>
+<td>no</td>
+<td>undirected</td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_result</td>
+<td>string</td>
+<td>Information about the network graph.</td>
 <td>yes</td>
 <td></td>
     </tr>
