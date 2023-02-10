@@ -60,10 +60,10 @@ pip install --extra-index-url https://pypi.fury.io/dharpa/ -U -e .[all_dev]
 
 #### Try it out
 
-After this is done, you should be able to run the included example module via:
+After this is done, you should be able to run the following command in the terminal:
 
 ```console
-kiara run playground_example text_1="xxx" text_2="yyy"
+kiara operation list
 ...
 ...
 ```
