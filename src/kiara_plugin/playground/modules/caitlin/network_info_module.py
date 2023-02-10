@@ -2,9 +2,10 @@ from kiara import KiaraModule
 import csv
 import networkx as nx
 from operator import itemgetter
-
-from kiara_plugin.network_analysis.models import NetworkData
-
+import community
+import numpy
+import pandas as pd
+from kiara.models.values.value import ValueMap, ValueMapWritable
 
 class NetworkInfo(KiaraModule):
     """Return basic information for the newtork graph created, including number of nodes and edges.
