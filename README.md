@@ -12,6 +12,8 @@ playground
  - Documentation: [https://DHARPA-Project.github.io/kiara_plugin.playground](https://DHARPA-Project.github.io/kiara_plugin.playground)
  - Code: [https://github.com/DHARPA-Project/kiara_plugin.playground](https://github.com/DHARPA-Project/kiara_plugin.playground)
  - `kiara`: [https://dharpa.org/kiara.documentation](https://dharpa.org/kiara.documentation)
+ 
+ - Tutorial on how to create your own kiara module: [https://dharpa.org/kiara.documentation/latest/extending_kiara/creating_modules/the_basics/](https://dharpa.org/kiara.documentation/latest/extending_kiara/creating_modules/the_basics/)
 
 ## Description
 
