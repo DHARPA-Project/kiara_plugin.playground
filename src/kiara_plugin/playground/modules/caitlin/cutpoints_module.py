@@ -1,11 +1,6 @@
 from kiara import KiaraModule
-import csv
 import networkx as nx
-from operator import itemgetter
-import community
-import numpy
-import pandas as pd
-from kiara.models.values.value import ValueMap, ValueMapWritable
+from kiara_plugin.network_analysis.models import NetworkData
 
 
 class CutPointsList(KiaraModule):
