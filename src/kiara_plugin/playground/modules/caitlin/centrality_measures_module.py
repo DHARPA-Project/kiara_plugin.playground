@@ -36,10 +36,10 @@ class Degree_Ranking(KiaraModule):
                 "type": "table",
                 "doc" : "A table showing the rank and raw score for degree centrality."
             },
-            "network_data": {
-                "type": "network_data",
-                "doc": "Updated network data with degree ranking assigned as a node attribute."
-            }
+#            "network_data": {
+#                "type": "network_data",
+#                "doc": "Updated network data with degree ranking assigned as a node attribute."
+#            }
         }
 
     def process(self, inputs, outputs):
@@ -70,10 +70,10 @@ class Degree_Ranking(KiaraModule):
         df= pd.DataFrame(sorted_dict)
         df.columns = ['Rank', 'Node', 'Score']
         
-        attribute_network = create_from_networkx_graph(cls, G)
+#       attribute_network = create_from_networkx_graph(cls, G)
         
         outputs.set_value('network_result', df)
-        outputs.set_value('network_data', attribute_network)
+#       outputs.set_value('network_data', attribute_network)
         
 class Betweenness_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for betweenness centrality.
