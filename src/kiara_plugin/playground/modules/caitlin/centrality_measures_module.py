@@ -5,6 +5,7 @@ import pandas as pd
 
 from kiara_plugin.network_analysis.models import NetworkData
 
+
 KIARA_METADATA = {
     "authors": [
         {"name": "Caitlin Burge", "email": "caitlin.burge@uni.lu"},
@@ -34,6 +35,10 @@ class Degree_Ranking(KiaraModule):
             "network_result": {
                 "type": "table",
                 "doc" : "A table showing the rank and raw score for degree centrality."
+            },
+            "network_data": {
+                "type": "network_data",
+                "doc": "Updated network data with degree ranking assigned as a node attribute."
             }
         }
 
@@ -58,13 +63,17 @@ class Degree_Ranking(KiaraModule):
             return result
         
         degree = G.degree()
+        nx.set_node_attributes(G, degree, 'Degree')
             
         sorted_dict = [[item[1][1], item [0], item[1][0]] for item in sorted(result_func(sorted(degree, key=itemgetter(1), reverse =True)).items(), key=itemgetter(1), reverse =True)]
 
         df= pd.DataFrame(sorted_dict)
         df.columns = ['Rank', 'Node', 'Score']
         
+        attribute_network = create_from_networkx_graph(cls, G)
+        
         outputs.set_value('network_result', df)
+        outputs.set_value('network_data', attribute_network)
         
 class Betweenness_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for betweenness centrality.
