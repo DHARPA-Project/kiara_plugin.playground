@@ -570,6 +570,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kiara_plugin.playground.modules.caitlin.cutpoints_module-attributes" class="md-nav__link">
+    Attributes
+  </a>
+  
+    <nav class="md-nav" aria-label="Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.playground.modules.caitlin.cutpoints_module.KIARA_METADATA" class="md-nav__link">
+    KIARA_METADATA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_plugin.playground.modules.caitlin.cutpoints_module-classes" class="md-nav__link">
     Classes
   </a>
@@ -814,6 +834,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kiara_plugin.playground.modules.caitlin.cutpoints_module-attributes" class="md-nav__link">
+    Attributes
+  </a>
+  
+    <nav class="md-nav" aria-label="Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.playground.modules.caitlin.cutpoints_module.KIARA_METADATA" class="md-nav__link">
+    KIARA_METADATA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_plugin.playground.modules.caitlin.cutpoints_module-classes" class="md-nav__link">
     Classes
   </a>
@@ -907,7 +947,26 @@
 
 
 
+<h2 id="kiara_plugin.playground.modules.caitlin.cutpoints_module-attributes">Attributes<a href="#kiara_plugin.playground.modules.caitlin.cutpoints_module-attributes" class="headerlink" title="Permanent link">&para;</a></h2>
 
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_plugin.playground.modules.caitlin.cutpoints_module.KIARA_METADATA" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">KIARA_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;authors&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Caitlin Burge&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;caitlin.burge@uni.lu&#39;</span><span class="p">}],</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Kiara modules for: network_analysis&#39;</span><span class="p">}</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#kiara_plugin.playground.modules.caitlin.cutpoints_module.KIARA_METADATA" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
 <h2 id="kiara_plugin.playground.modules.caitlin.cutpoints_module-classes">Classes<a href="#kiara_plugin.playground.modules.caitlin.cutpoints_module-classes" class="headerlink" title="Permanent link">&para;</a></h2>
 
 <div class="doc doc-object doc-class">
@@ -934,13 +993,7 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 
         <details class="quote">
           <summary>Source code in <code>kiara_plugin/playground/modules/caitlin/cutpoints_module.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
@@ -970,7 +1023,13 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">CutPointsList</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">CutPointsList</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a list of nodes that are cut-points.</span>
 <span class="sd">    Cut-points are any node in a network whose removal disconnects members of the network, creating one or more new distinct components.</span>
 
@@ -1036,13 +1095,13 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/playground/modules/caitlin/cutpoints_module.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s2">&quot;network_data&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
@@ -1069,13 +1128,13 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/playground/modules/caitlin/cutpoints_module.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="s2">&quot;network_result&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
@@ -1102,18 +1161,18 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/playground/modules/caitlin/cutpoints_module.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
     <span class="n">edges</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s1">&#39;network_data&#39;</span><span class="p">)</span>
 
     <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># check the source for the NetworkData class to see what</span>
