@@ -5,6 +5,12 @@ import pandas as pd
 
 from kiara_plugin.network_analysis.models import NetworkData
 
+KIARA_METADATA = {
+    "authors": [
+        {"name": "Caitlin Burge", "email": "caitlin.burge@uni.lu"},
+    ],
+    "description": "Kiara modules for: network_analysis",
+}
 
 class Degree_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for degree centrality.
