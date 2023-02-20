@@ -1,4 +1,4 @@
-from kiara import KiaraModule
+from kiara.api import KiaraModule
 import networkx as nx
 from kiara_plugin.network_analysis.models import NetworkData
 

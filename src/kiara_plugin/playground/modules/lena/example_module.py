@@ -2,7 +2,7 @@
 import typing
 
 import networkx as nx
-from kiara import KiaraModule, ValueSchema, KiaraModuleConfig, ValueMap
+from kiara.api import KiaraModule, ValueSchema, KiaraModuleConfig, ValueMap
 from networkx import Graph
 from pydantic import Field
 

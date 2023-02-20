@@ -1,4 +1,4 @@
-from kiara import KiaraModule
+from kiara.api import KiaraModule
 from kiara.exceptions import KiaraProcessingException
 import pandas as pd
 import re

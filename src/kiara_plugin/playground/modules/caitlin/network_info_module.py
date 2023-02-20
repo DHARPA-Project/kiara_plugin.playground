@@ -1,4 +1,4 @@
-from kiara import KiaraModule
+from kiara.api import KiaraModule
 import csv
 import networkx as nx
 from operator import itemgetter

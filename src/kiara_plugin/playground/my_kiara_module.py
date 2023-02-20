@@ -1,4 +1,4 @@
-from kiara import KiaraModule
+from kiara.api import KiaraModule
 
 class TutorialModule(KiaraModule):
 

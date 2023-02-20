@@ -49,7 +49,7 @@ input_aliases:
   generate_lda.compute_coherence: compute_coherence
   generate_lda.words_per_topic: words_per_topic
   create_stopwords_list.languages: languages
-  create_stopwords_list.stopword_lists: stopword_lists
+  create_stopwords_list.stopwords: stopwords
   preprocess_corpus.to_lowercase: to_lowercase
   preprocess_corpus.remove_alphanumeric: remove_alphanumeric
   preprocess_corpus.remove_non_alpha: remove_non_alpha
@@ -75,5 +75,5 @@ defaults:
   date_parse_max: 21
   text_corpus_folder_path: "${pipeline_dir}/../../data/text_corpus/data"
   languages: ["italian"]
-  stopword_lists: []
+  stopwords: []
   num_topics_max: 7
