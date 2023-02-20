@@ -5,6 +5,13 @@ from operator import itemgetter
 
 from kiara_plugin.network_analysis.models import NetworkData
 
+KIARA_METADATA = {
+    "authors": [
+        {"name": "Caitlin Burge", "email": "caitlin.burge@uni.lu"},
+    ],
+    "description": "Kiara modules for: network_analysis",
+}
+
 class NetworkInfo(KiaraModule):
     """Return basic information for the newtork graph created, including number of nodes and edges.
     
