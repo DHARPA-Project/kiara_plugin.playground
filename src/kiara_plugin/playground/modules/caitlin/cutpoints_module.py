@@ -2,6 +2,12 @@ from kiara.api import KiaraModule
 import networkx as nx
 from kiara_plugin.network_analysis.models import NetworkData
 
+KIARA_METADATA = {
+    "authors": [
+        {"name": "Caitlin Burge", "email": "caitlin.burge@uni.lu"},
+    ],
+    "description": "Kiara modules for: network_analysis",
+}
 
 class CutPointsList(KiaraModule):
     """Create a list of nodes that are cut-points.
