@@ -5,7 +5,6 @@ from operator import itemgetter
 
 from kiara_plugin.network_analysis.models import NetworkData
 
-
 class NetworkInfo(KiaraModule):
     """Return basic information for the newtork graph created, including number of nodes and edges.
     

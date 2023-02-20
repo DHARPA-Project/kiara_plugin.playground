@@ -12,6 +12,8 @@ playground
  - Documentation: [https://DHARPA-Project.github.io/kiara_plugin.playground](https://DHARPA-Project.github.io/kiara_plugin.playground)
  - Code: [https://github.com/DHARPA-Project/kiara_plugin.playground](https://github.com/DHARPA-Project/kiara_plugin.playground)
  - `kiara`: [https://dharpa.org/kiara.documentation](https://dharpa.org/kiara.documentation)
+ 
+ - Tutorial on how to create your own kiara module: [https://dharpa.org/kiara.documentation/latest/extending_kiara/creating_modules/the_basics/](https://dharpa.org/kiara.documentation/latest/extending_kiara/creating_modules/the_basics/)
 
 ## Description
 
@@ -60,10 +62,10 @@ pip install --extra-index-url https://pypi.fury.io/dharpa/ -U -e .[all_dev]
 
 #### Try it out
 
-After this is done, you should be able to run the included example module via:
+After this is done, you should be able to run the following command in the terminal:
 
 ```console
-kiara run playground_example text_1="xxx" text_2="yyy"
+kiara operation list
 ...
 ...
 ```
