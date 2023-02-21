@@ -70,7 +70,7 @@ class Degree_Ranking(KiaraModule):
         df= pd.DataFrame(sorted_dict)
         df.columns = ['Rank', 'Node', 'Score']
         
-        attribute_network = G.create_from_networkx_graph(nx.Graph)
+        attribute_network = NetworkData.create_from_networkx_graph(G)
         
         outputs.set_value('network_result', df)
         outputs.set_value('network_data', attribute_network)
