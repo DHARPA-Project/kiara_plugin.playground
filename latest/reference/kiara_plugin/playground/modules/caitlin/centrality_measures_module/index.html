@@ -1392,7 +1392,7 @@ https://networkx.org/documentation/stable/reference/generated/networkx.classes.f
         <span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sorted_dict</span><span class="p">)</span>
         <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="s1">&#39;Score&#39;</span><span class="p">]</span>
 
-        <span class="n">attribute_network</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+        <span class="n">attribute_network</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 
         <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;network_result&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
         <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;network_data&#39;</span><span class="p">,</span> <span class="n">attribute_network</span><span class="p">)</span>
@@ -1558,7 +1558,7 @@ https://networkx.org/documentation/stable/reference/generated/networkx.classes.f
     <span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sorted_dict</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="s1">&#39;Score&#39;</span><span class="p">]</span>
 
-    <span class="n">attribute_network</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+    <span class="n">attribute_network</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 
     <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;network_result&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
     <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;network_data&#39;</span><span class="p">,</span> <span class="n">attribute_network</span><span class="p">)</span>
