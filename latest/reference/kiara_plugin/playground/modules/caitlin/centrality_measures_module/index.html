@@ -1334,7 +1334,8 @@ https://networkx.org/documentation/stable/reference/generated/networkx.classes.f
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
-<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Degree_Ranking</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
+<span class="normal">75</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Degree_Ranking</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an ordered table with the rank and raw score for degree centrality.</span>
 <span class="sd">    In an undirected graph, degree centrality measures the number of independent connections each node has.</span>
 
@@ -1357,10 +1358,10 @@ https://networkx.org/documentation/stable/reference/generated/networkx.classes.f
                 <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;doc&quot;</span> <span class="p">:</span> <span class="s2">&quot;A table showing the rank and raw score for degree centrality.&quot;</span>
             <span class="p">},</span>
-<span class="c1">#            &quot;network_data&quot;: {</span>
-<span class="c1">#                &quot;type&quot;: &quot;network_data&quot;,</span>
-<span class="c1">#                &quot;doc&quot;: &quot;Updated network data with degree ranking assigned as a node attribute.&quot;</span>
-<span class="c1">#            }</span>
+            <span class="s2">&quot;network_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated network data with degree ranking assigned as a node attribute.&quot;</span>
+            <span class="p">}</span>
         <span class="p">}</span>
 
     <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
@@ -1391,9 +1392,10 @@ https://networkx.org/documentation/stable/reference/generated/networkx.classes.f
         <span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sorted_dict</span><span class="p">)</span>
         <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="s1">&#39;Score&#39;</span><span class="p">]</span>
 
-<span class="c1">#       attribute_network = create_from_networkx_graph(cls, G)</span>
+        <span class="n">attribute_network</span> <span class="o">=</span> <span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 
         <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;network_result&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;network_data&#39;</span><span class="p">,</span> <span class="n">attribute_network</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -1466,17 +1468,17 @@ https://networkx.org/documentation/stable/reference/generated/networkx.classes.f
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;network_result&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;doc&quot;</span> <span class="p">:</span> <span class="s2">&quot;A table showing the rank and raw score for degree centrality.&quot;</span>
-            <span class="p">},</span>
-<span class="c1">#            &quot;network_data&quot;: {</span>
-<span class="c1">#                &quot;type&quot;: &quot;network_data&quot;,</span>
-<span class="c1">#                &quot;doc&quot;: &quot;Updated network data with degree ranking assigned as a node attribute.&quot;</span>
-<span class="c1">#            }</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;network_result&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span> <span class="p">:</span> <span class="s2">&quot;A table showing the rank and raw score for degree centrality.&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;network_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Updated network data with degree ranking assigned as a node attribute.&quot;</span>
         <span class="p">}</span>
+    <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -1527,37 +1529,39 @@ https://networkx.org/documentation/stable/reference/generated/networkx.classes.f
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
-<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
-        <span class="n">edges</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s1">&#39;network_data&#39;</span><span class="p">)</span>
+<span class="normal">75</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s1">&#39;network_data&#39;</span><span class="p">)</span>
 
-        <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># check the source for the NetworkData class to see what</span>
-                                                <span class="c1"># convenience methods it can give you:</span>
-                                                <span class="c1"># https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52</span>
+    <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># check the source for the NetworkData class to see what</span>
+                                            <span class="c1"># convenience methods it can give you:</span>
+                                            <span class="c1"># https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52</span>
 
-        <span class="n">G</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">as_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">as_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">result_func</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
-            <span class="n">rank</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">previous</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">{})</span>
-            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
-                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">if</span> <span class="n">num</span> <span class="o">!=</span> <span class="n">previous</span><span class="p">:</span>
-                    <span class="n">rank</span> <span class="o">+=</span> <span class="n">count</span>
-                    <span class="n">previous</span> <span class="o">=</span> <span class="n">num</span>
-                    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span><span class="p">,</span> <span class="n">rank</span>
-            <span class="k">return</span> <span class="n">result</span>
+    <span class="k">def</span> <span class="nf">result_func</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+        <span class="n">rank</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">previous</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">num</span> <span class="o">!=</span> <span class="n">previous</span><span class="p">:</span>
+                <span class="n">rank</span> <span class="o">+=</span> <span class="n">count</span>
+                <span class="n">previous</span> <span class="o">=</span> <span class="n">num</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span><span class="p">,</span> <span class="n">rank</span>
+        <span class="k">return</span> <span class="n">result</span>
 
-        <span class="n">degree</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
-        <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="s1">&#39;Degree&#39;</span><span class="p">)</span>
+    <span class="n">degree</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="s1">&#39;Degree&#39;</span><span class="p">)</span>
 
-        <span class="n">sorted_dict</span> <span class="o">=</span> <span class="p">[[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">item</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">result_func</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span> <span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span> <span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+    <span class="n">sorted_dict</span> <span class="o">=</span> <span class="p">[[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">item</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">result_func</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span> <span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span> <span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
 
-        <span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sorted_dict</span><span class="p">)</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="s1">&#39;Score&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sorted_dict</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rank&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="s1">&#39;Score&#39;</span><span class="p">]</span>
 
-<span class="c1">#       attribute_network = create_from_networkx_graph(cls, G)</span>
+    <span class="n">attribute_network</span> <span class="o">=</span> <span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 
-        <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;network_result&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+    <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;network_result&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+    <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s1">&#39;network_data&#39;</span><span class="p">,</span> <span class="n">attribute_network</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
