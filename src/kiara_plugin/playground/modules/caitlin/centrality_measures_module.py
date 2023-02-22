@@ -36,7 +36,7 @@ class Degree_Ranking(KiaraModule):
                 "type": "table",
                 "doc" : "A table showing the rank and raw score for degree centrality."
             },
-            "network_data": {
+            "centrality_network": {
                 "type": "network_data",
                 "doc": "Updated network data with degree ranking assigned as a node attribute."
             }
@@ -72,9 +72,8 @@ class Degree_Ranking(KiaraModule):
         
         attribute_network = NetworkData.create_from_networkx_graph(G)
         
-        outputs.set_value('network_result', df)
-        outputs.set_value('network_data', attribute_network)
-        
+        outputs.set_values(network_result=df, centrality_network=attribute_network)
+
 class Betweenness_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for betweenness centrality.
     In an undirected graph, betweenness centrality measures the percentage of all shortest paths that a node appears on, therefore measuring the likeliness that a node may act as a connector or 'intermediary'.
@@ -127,7 +126,7 @@ class Betweenness_Ranking(KiaraModule):
         df.columns = ['Rank', 'Node', 'Score']
         
         outputs.set_value('network_result', df)
-        
+
 class Eigenvector_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for betweenness centrality.
     In an undirected graph, eigenvector centrality measures the extent to which a node is connected to other nodes of importance or influence.
@@ -185,7 +184,7 @@ class Eigenvector_Ranking(KiaraModule):
         df.columns = ['Rank', 'Node', 'Score']
         
         outputs.set_value('network_result', df)
-        
+
 class Closeness_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for closeness centrality.
     In an undirected graph, closeness centrality measures the average shortest distance path between a node and all reachable nodes in the network.
