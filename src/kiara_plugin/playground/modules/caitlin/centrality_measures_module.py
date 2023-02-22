@@ -51,6 +51,16 @@ class Degree_Ranking(KiaraModule):
 
         G = network_data.as_networkx_graph(nx.Graph)
         
+        MG = network_data.as_networkx_graph(nx.MultiDiGraph)
+        
+        graph = nx.DiGraph()
+        for u,v,data in MG.edges(data=True):
+            w = data['weight'] if 'weight' in data else 1.0
+            if graph.has_edge(u,v):
+                graph[u][v]['weight'] += w
+            else:
+                graph.add_edge(u, v, weight=w)
+        
         def result_func(list):
             rank, count, previous, result = (0, 0, None, {})
             for key, num in list:
@@ -62,10 +72,17 @@ class Degree_Ranking(KiaraModule):
                 result[key] = num, rank
             return result
         
-        degree = G.degree()
-        nx.set_node_attributes(G, degree, 'Degree')
+        degree = {}
+        for node in G:
+            degree[node]= G.degree(node)
+        nx.set_node_attributes(G, degree, 'Degree Score')
+        
+        weight_degree = {}
+        for node in MG:
+            weight_degree[node]= MG.degree(node)
+        nx.set_node_attributes(G, weight_degree, 'Weighted Degree Score')
             
-        sorted_dict = [[item[1][1], item [0], item[1][0]] for item in sorted(result_func(sorted(degree, key=itemgetter(1), reverse =True)).items(), key=itemgetter(1), reverse =True)]
+        sorted_dict = [[item[1][1], item [0], item[1][0]] for item in sorted(result_func(sorted(degree.items(), key=itemgetter(1), reverse =True)).items(), key=itemgetter(1), reverse =True)]
 
         df= pd.DataFrame(sorted_dict)
         df.columns = ['Rank', 'Node', 'Score']
@@ -96,6 +113,10 @@ class Betweenness_Ranking(KiaraModule):
             "network_result": {
                 "type": "table",
                 "doc" : "A table showing the rank and raw score for betweenness centrality."
+            },
+            "centrality_network": {
+                "type": "network_data",
+                "doc": "Updated network data with betweenness ranking assigned as a node attribute."
             }
         }
 
@@ -120,12 +141,15 @@ class Betweenness_Ranking(KiaraModule):
             return result
         
         between = nx.betweenness_centrality(G)
+        nx.set_node_attributes(G, between, 'Betweenness Score')
         sorted_dict = [[item[1][1], item [0], item[1][0]] for item in sorted(result_func(sorted(between.items(), key=itemgetter(1), reverse =True)).items(), key=itemgetter(1), reverse =True)]
         
         df= pd.DataFrame(sorted_dict)
         df.columns = ['Rank', 'Node', 'Score']
         
-        outputs.set_value('network_result', df)
+        attribute_network = NetworkData.create_from_networkx_graph(G)
+        
+        outputs.set_values(network_result=df, centrality_network=attribute_network)
 
 class Eigenvector_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for betweenness centrality.
@@ -153,6 +177,10 @@ class Eigenvector_Ranking(KiaraModule):
             "network_result": {
                 "type": "table",
                 "doc" : "A table showing the rank and raw score for eigenvector centrality."
+            },
+            "centrality_network": {
+                "type": "network_data",
+                "doc": "Updated network data with eigenvector ranking assigned as a node attribute."
             }
         }
 
@@ -178,12 +206,15 @@ class Eigenvector_Ranking(KiaraModule):
             return result
         
         eigenvector = nx.eigenvector_centrality(G, max_iter=iterations)
+        nx.set_node_attributes(G, eigenvector, 'Eigenvector Score')
         sorted_dict = [[item[1][1], item [0], item[1][0]] for item in sorted(result_func(sorted(eigenvector.items(), key=itemgetter(1), reverse =True)).items(), key=itemgetter(1), reverse =True)]
         
         df= pd.DataFrame(sorted_dict)
         df.columns = ['Rank', 'Node', 'Score']
         
-        outputs.set_value('network_result', df)
+        attribute_network = NetworkData.create_from_networkx_graph(G)
+        
+        outputs.set_values(network_result=df, centrality_network=attribute_network)
 
 class Closeness_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for closeness centrality.
@@ -207,6 +238,10 @@ class Closeness_Ranking(KiaraModule):
             "network_result": {
                 "type": "table",
                 "doc" : "A table showing the rank and raw score for closeness centrality."
+            },
+            "centrality_network": {
+                "type": "network_data",
+                "doc": "Updated network data with closeness ranking assigned as a node attribute."
             }
         }
 
@@ -231,9 +266,12 @@ class Closeness_Ranking(KiaraModule):
             return result
         
         closeness = nx.closeness_centrality(G)
+        nx.set_node_attributes(G, closeness, 'Closeness Score')
         sorted_dict = [[item[1][1], item [0], item[1][0]] for item in sorted(result_func(sorted(closeness.items(), key=itemgetter(1), reverse =True)).items(), key=itemgetter(1), reverse =True)]
         
         df= pd.DataFrame(sorted_dict)
         df.columns = ['Rank', 'Node', 'Score']
         
-        outputs.set_value('network_result', df)
+        attribute_network = NetworkData.create_from_networkx_graph(G)
+        
+        outputs.set_values(network_result=df, centrality_network=attribute_network)

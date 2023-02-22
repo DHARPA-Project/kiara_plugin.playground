@@ -31,6 +31,10 @@ class CutPointsList(KiaraModule):
             "network_result": {
                 "type": "list",
                 "doc" : "A list of all nodes that are cut-points."
+            },
+            "centrality_network": {
+                "type": "network_data",
+                "doc": "Updated network data with eigenvector ranking assigned as a node attribute."
             }
         }
 
@@ -44,6 +48,19 @@ class CutPointsList(KiaraModule):
         G = network_data.as_networkx_graph(nx.Graph)  # you can also use nx.DiGraph or other types
 
         cutpoints = list(nx.articulation_points(G))
+        
+        cut_dict = {}
+        for node in G:
+            if node in cutpoints:
+                cut_dict[node] = 'Yes'
+            else:
+                cut_dict[node] = 'No'
+                
+        nx.set_node_attributes(G, cut_dict, 'Cut Point')
 
-        outputs.set_value('network_result', cutpoints)
+        attribute_network = NetworkData.create_from_networkx_graph(G)
+        
+        outputs.set_values(network_result=cutpoints, centrality_network=attribute_network)
+
+
 
