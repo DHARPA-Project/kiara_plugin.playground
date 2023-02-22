@@ -78,8 +78,8 @@ class Degree_Ranking(KiaraModule):
         nx.set_node_attributes(G, degree, 'Degree Score')
         
         weight_degree = {}
-        for node in MG:
-            weight_degree[node]= MG.degree(node)
+        for node in graph:
+            weight_degree[node]= graph.degree(node)
         nx.set_node_attributes(G, weight_degree, 'Weighted Degree Score')
             
         sorted_dict = [[item[1][1], item [0], item[1][0]] for item in sorted(result_func(sorted(degree.items(), key=itemgetter(1), reverse =True)).items(), key=itemgetter(1), reverse =True)]
