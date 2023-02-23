@@ -79,13 +79,14 @@ class Degree_Ranking(KiaraModule):
         
         weight_degree = {}
         for node in graph:
-            weight_degree[node]= graph.degree(node)
+            weight_degree[node]= graph.degree(node, weight='weight')
         nx.set_node_attributes(G, weight_degree, 'Weighted Degree Score')
             
         sorted_dict = [[item[1][1], item [0], item[1][0]] for item in sorted(result_func(sorted(degree.items(), key=itemgetter(1), reverse =True)).items(), key=itemgetter(1), reverse =True)]
 
         df= pd.DataFrame(sorted_dict)
         df.columns = ['Rank', 'Node', 'Score']
+        df['Weighted Degree'] = weight_degree
         
         attribute_network = NetworkData.create_from_networkx_graph(G)
         
