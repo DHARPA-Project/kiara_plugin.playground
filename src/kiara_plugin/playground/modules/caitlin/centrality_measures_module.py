@@ -28,11 +28,16 @@ class Degree_Ranking(KiaraModule):
                 "type": "network_data",
                 "doc": "The network graph being queried."
             },
-            "weighted_degree": {
-                "type" : "boolean",
+            "weighted_degree":{
+                "type": "boolean",
                 "default": True,
-                "doc": "Includes weighted degree, calculated by aggregrating parallel edges where edge weight is 1."
-            }
+                "doc": "Boolean to indicate whether to calculate weighted degree or not. Conditions for calculation can be set in 'weight_column_name'."
+            },
+            "weight_column_name": {
+                "type" : "string",
+                "default": '',
+                "doc": "The name of the column in the edge table containing data for the 'weight' or 'strength' of an edge. If there is a column already named 'weight', this will be automatically selected. If otherwise left empty, weighted degree is calculated by aggregrating parallel edges where edge weight is assigned a weight of 1."
+            }   
         }
 
     def create_outputs_schema(self):
@@ -49,13 +54,15 @@ class Degree_Ranking(KiaraModule):
 
     def process(self, inputs, outputs):
         edges = inputs.get_value_obj('network_data')
-        weighted_degree = inputs.get_value_data("weighted_degree")
+        wd = inputs.get_value_data('weighted_degree')
+        weight_name = inputs.get_value_data('weight_column_name')
 
         network_data: NetworkData = edges.data  # check the source for the NetworkData class to see what
                                                 # convenience methods it can give you:
                                                 # https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52
 
         G = network_data.as_networkx_graph(nx.Graph)
+        G.remove_edges_from(list(nx.selfloop_edges(G)))
         
         def result_func(list):
             rank, count, previous, result = (0, 0, None, {})
@@ -77,27 +84,49 @@ class Degree_Ranking(KiaraModule):
 
         df= pd.DataFrame(sorted_dict, columns=['Rank','Node','Degree'])
         
-    
-        if weighted_degree == True:
-            MG = network_data.as_networkx_graph(nx.MultiDiGraph)
+        
+        if wd == True:
+            if weight_name == '':
+                MG = network_data.as_networkx_graph(nx.MultiDiGraph)
             
-            graph = nx.DiGraph()
-            for u,v,data in MG.edges(data=True):
-                w = data['weight'] if 'weight' in data else 1.0
-                if graph.has_edge(u,v):
-                    graph[u][v]['weight'] += w
-                else:
-                    graph.add_edge(u, v, weight=w)
+                graph = nx.DiGraph()
+                for u,v,data in MG.edges(data=True):
+                    w = data['weight'] if 'weight' in data else 1
+                    if graph.has_edge(u,v):
+                        graph[u][v]['weight'] += w
+                    else:
+                        graph.add_edge(u, v, weight=w)
                 
-            weight_degree = {}
-            for node in graph:
-                weight_degree[node]= graph.degree(node, weight='weight')
-            nx.set_node_attributes(G, weight_degree, 'Weighted Degree Score')
-        
-            df2 = pd.DataFrame(list(weight_degree.items()), columns=['Node', 'Weighted Degree'])
-            df = df.merge(df2, how='left', on='Node')
-            df = df.filter(items=['Rank','Node','Degree','Weighted Degree'])
-        
+                weight_degree = {}
+                for node in graph:
+                    weight_degree[node]= graph.degree(node, weight='weight')
+                nx.set_node_attributes(G, weight_degree, 'Weighted Degree Score')
+                        
+                df2 = pd.DataFrame(list(weight_degree.items()), columns=['Node', 'Weighted Degree'])
+                df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
+            
+            if weight_name != '':
+                MG = network_data.as_networkx_graph(nx.MultiDiGraph)
+                edge_weight = nx.get_edge_attributes(MG, weight_name)
+                for u,v,key in edge_weight:
+                    nx.set_edge_attributes(MG, edge_weight, 'weight')
+            
+                graph = nx.DiGraph()
+                for u,v,data in MG.edges(data=True):
+                    w = data['weight'] if 'weight' in data else 1
+                    if graph.has_edge(u,v):
+                        graph[u][v]['weight'] += w
+                    else:
+                        graph.add_edge(u, v, weight=w)
+                
+                weight_degree = {}
+                for node in graph:
+                    weight_degree[node]= graph.degree(node, weight='weight')
+                nx.set_node_attributes(G, weight_degree, 'Weighted Degree Score')
+            
+                df2 = pd.DataFrame(list(weight_degree.items()), columns=['Node', 'Weighted Degree'])
+                df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
+                
         attribute_network = NetworkData.create_from_networkx_graph(G)
         
         outputs.set_values(network_result=df, centrality_network=attribute_network)
@@ -139,6 +168,7 @@ class Betweenness_Ranking(KiaraModule):
                                                 # https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52
 
         G = network_data.as_networkx_graph(nx.Graph)
+        G.remove_edges_from(list(nx.selfloop_edges(G)))
         
         def result_func(list):
             rank, count, previous, result = (0, 0, None, {})
@@ -204,6 +234,7 @@ class Eigenvector_Ranking(KiaraModule):
                                                 # https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52
 
         G = network_data.as_networkx_graph(nx.Graph)
+        G.remove_edges_from(list(nx.selfloop_edges(G)))
         
         def result_func(list):
             rank, count, previous, result = (0, 0, None, {})
@@ -264,6 +295,7 @@ class Closeness_Ranking(KiaraModule):
                                                 # https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52
 
         G = network_data.as_networkx_graph(nx.Graph)
+        G.remove_edges_from(list(nx.selfloop_edges(G)))
         
         def result_func(list):
             rank, count, previous, result = (0, 0, None, {})
