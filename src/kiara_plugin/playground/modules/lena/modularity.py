@@ -13,7 +13,9 @@ KIARA_METADATA = {
 }
 
 class ModularityCommunity(KiaraModule):
-    """Calculate modularity for each node and attach to node list as attribute.
+    """Calculate modularity for each node and attach modularity group number to node list as attribute.
+
+    This is a density-based algorithm that can identify clusters within connected components.
     """
     
     _module_type_name = 'compute.modularity_group'
@@ -49,10 +51,10 @@ class ModularityCommunity(KiaraModule):
 
         modularity_dict = {} 
         for i,c in enumerate(communities): # Loop through the list of communities, keeping track of the number for the community
-            for name in c: # Loop through each person in a community
-                modularity_dict[name] = i # Create an entry in the dictionary for the person, where the value is which group they belong to.
+            for name in c: # Loop through each node in a community
+                modularity_dict[name] = i # Create an entry in the dictionary for the node, where the value is which group it belongs to.
 
-        nx.set_node_attributes(G, modularity_dict, 'modularity')
+        nx.set_node_attributes(G, modularity_dict, 'Modularity_Group')
 
         attribute_network = NetworkData.create_from_networkx_graph(G)
         
