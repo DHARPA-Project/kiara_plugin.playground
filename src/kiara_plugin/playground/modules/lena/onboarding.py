@@ -22,9 +22,14 @@ class GmlOnboarding(KiaraModule):
     ) -> ValueMapSchema:
 
         result = {
-            "file": {
-                "type": "file",
-                "doc": "The source value (of type 'file').",
+            #"file": {
+             #   "type": "file",
+              #  "doc": "The source value (of type 'file').",
+               # "optional": False,
+            #},
+            "path": {
+                "type": "string",
+                "doc": "The path to the local file.",
                 "optional": False,
             },
             "label":{
@@ -46,13 +51,19 @@ class GmlOnboarding(KiaraModule):
     
     def process(self, inputs, outputs):
 
-        gml_file = inputs.get_value_obj('file')
+        input_file = inputs.get_value_data('path')
+        gml_file= input_file
+
+        #print(gml_file)
         label = inputs.get_value_data('label')
+        #print(label)
 
         if label is None:
             G = nx.read_gml(gml_file)
+            #print("no label")
         else:
             G = nx.read_gml(gml_file, label=label)
+            #print("with label")
 
         network_data = NetworkData.create_from_networkx_graph(G)
         
