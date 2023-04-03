@@ -220,7 +220,7 @@ class Betweenness_Ranking(KiaraModule):
                             
                 if wm == True:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_betweenness = nx.betweenness_centrality(graph, weight='weight')
                 nx.set_node_attributes(G, weight_betweenness, 'Weighted Betweenness Score')
@@ -244,7 +244,7 @@ class Betweenness_Ranking(KiaraModule):
                         
                 if wm == True:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_betweenness = nx.betweenness_centrality(graph, weight='weight')
                 nx.set_node_attributes(G, weight_betweenness, 'Weighted Betweenness Score')
@@ -350,7 +350,7 @@ class Eigenvector_Ranking(KiaraModule):
                             
                 if wm == False:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_eigenvector = nx.eigenvector_centrality(graph, weight='weight', max_iter=iterations)
                 nx.set_node_attributes(G, weight_eigenvector, 'Weighted Eigenvector Score')
@@ -374,7 +374,7 @@ class Eigenvector_Ranking(KiaraModule):
                         
                 if wm == False:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_eigenvector = nx.eigenvector_centrality(graph, weight='weight', max_iter=iterations)
                 nx.set_node_attributes(G, weight_eigenvector, 'Weighted Eigenvector Score')
@@ -475,7 +475,7 @@ class Closeness_Ranking(KiaraModule):
                             
                 if wm == True:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_closeness = nx.closeness_centrality(graph, weight='weight')
                 nx.set_node_attributes(G, weight_closeness, 'Weighted Closeness Score')
@@ -499,7 +499,7 @@ class Closeness_Ranking(KiaraModule):
                         
                 if wm == True:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_closeness = nx.closeness_centrality(graph, weight='weight')
                 nx.set_node_attributes(G, weight_closeness, 'Weighted Closeness Score')
