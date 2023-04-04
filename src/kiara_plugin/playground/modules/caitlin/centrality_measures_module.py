@@ -477,7 +477,7 @@ class Closeness_Ranking(KiaraModule):
                     for u,v,d in graph.edges(data=True):
                         d['weight'] == (1/d['weight'])
                 
-                weight_closeness = nx.closeness_centrality(graph, weight='weight')
+                weight_closeness = nx.closeness_centrality(graph, distance='weight')
                 nx.set_node_attributes(G, weight_closeness, 'Weighted Closeness Score')
                         
                 df2 = pd.DataFrame(list(weight_closeness.items()), columns=['Node', 'Weighted Closeness'])
@@ -501,7 +501,7 @@ class Closeness_Ranking(KiaraModule):
                     for u,v,d in graph.edges(data=True):
                         d['weight'] == (1/d['weight'])
                 
-                weight_closeness = nx.closeness_centrality(graph, weight='weight')
+                weight_closeness = nx.closeness_centrality(graph, distance='weight')
                 nx.set_node_attributes(G, weight_closeness, 'Weighted Closeness Score')
                         
                 df2 = pd.DataFrame(list(weight_closeness.items()), columns=['Node', 'Weighted Closeness'])
