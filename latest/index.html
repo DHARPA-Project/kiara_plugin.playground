@@ -15,7 +15,7 @@
         <link rel="next" href="info/module_types/">
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.14">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.113286f1.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -87,7 +87,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="kiara_plugin.playground" class="md-header__button md-logo" aria-label="kiara_plugin.playground" data-md-component="logo">
       
@@ -582,20 +584,6 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/kiara_plugin/playground/modules/caitlin/centrality_measures_module/" class="md-nav__link">
-        centrality_measures_module
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="reference/kiara_plugin/playground/modules/caitlin/cutpoints_module/" class="md-nav__link">
         cutpoints_module
       </a>
@@ -664,8 +652,50 @@
   
   
     <li class="md-nav__item">
+      <a href="reference/kiara_plugin/playground/modules/lena/centrality_measures_module/" class="md-nav__link">
+        centrality_measures_module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="reference/kiara_plugin/playground/modules/lena/example_module/" class="md-nav__link">
         example_module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/kiara_plugin/playground/modules/lena/modularity/" class="md-nav__link">
+        modularity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/kiara_plugin/playground/modules/lena/onboarding/" class="md-nav__link">
+        onboarding
       </a>
     </li>
   
@@ -684,10 +714,64 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1_3_3" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/kiara_plugin/playground/modules/mariella/__init__/">mariella</a>
+          
+            <label for="__nav_5_1_1_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_5_1_1_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_1_1_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          mariella
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="reference/kiara_plugin/playground/modules/mariella/" class="md-nav__link">
-        mariella
+      <a href="reference/kiara_plugin/playground/modules/mariella/tm_dash/" class="md-nav__link">
+        tm_dash
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/kiara_plugin/playground/modules/mariella/viz_display/" class="md-nav__link">
+        viz_display
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -841,6 +925,12 @@
 <h3 id="module_types">module_types<a class="headerlink" href="#module_types" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.create.cut_point_list"><code>create.cut_point_list</code></a>: Create a list of nodes that are cut-points.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.get.network_info"><code>get.network_info</code></a>: Return basic information for the newtork graph created, including number of nodes and edges.</p>
+</li>
+<li>
 <p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.create.degree_rank_list"><code>create.degree_rank_list</code></a>: Creates an ordered table with the rank and raw score for degree centrality.</p>
 </li>
 <li>
@@ -853,29 +943,35 @@
 <p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.create.closeness_rank_list"><code>create.closeness_rank_list</code></a>: Creates an ordered table with the rank and raw score for closeness centrality.</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.create.cut_point_list"><code>create.cut_point_list</code></a>: Create a list of nodes that are cut-points.</p>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.compute.modularity_group"><code>compute.modularity_group</code></a>: Calculate modularity for each node and attach modularity group number to node list as attribute.</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.get.network_info"><code>get.network_info</code></a>: Return basic information for the newtork graph created, including number of nodes and edges.</p>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.onboard.gml_file"><code>onboard.gml_file</code></a>: This is a preliminary module for onboarding network data from gml files. It will likely be replaced by more generic onboarding modules when those are ready.</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.kiara_plugin.playground.modules.mariella.file_name_metadata"><code>kiara_plugin.playground.modules.mariella.file_name_metadata</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.playground.tm_dash.file_name_metadata"><code>playground.tm_dash.file_name_metadata</code></a>: -- n/a --</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.kiara_plugin.playground.modules.mariella.map_column"><code>kiara_plugin.playground.modules.mariella.map_column</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.playground.tm_dash.map_column"><code>playground.tm_dash.map_column</code></a>: -- n/a --</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.kiara_plugin.playground.modules.mariella.table_sample"><code>kiara_plugin.playground.modules.mariella.table_sample</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.playground.tm_dash.table_sample"><code>playground.tm_dash.table_sample</code></a>: -- n/a --</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.kiara_plugin.playground.modules.mariella.add_column"><code>kiara_plugin.playground.modules.mariella.add_column</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.playground.tm_dash.add_column"><code>playground.tm_dash.add_column</code></a>: -- n/a --</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.kiara_plugin.playground.modules.mariella.viz_data_query"><code>kiara_plugin.playground.modules.mariella.viz_data_query</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.playground.tm_dash.viz_data_query"><code>playground.tm_dash.viz_data_query</code></a>: -- n/a --</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.playground.get_lineage_data"><code>playground.get_lineage_data</code></a>: Get lineage data to display in visualization.</p>
 </li>
 </ul>
 <h3 id="operations">operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h3>
 <ul>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.compute.modularity_group"><code>compute.modularity_group</code></a>: Calculate modularity for each node and attach modularity group number to node list as attribute.</p>
+</li>
 <li>
 <p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.create.betweenness_rank_list"><code>create.betweenness_rank_list</code></a>: Creates an ordered table with the rank and raw score for betweenness centrality.</p>
 </li>
@@ -895,19 +991,25 @@
 <p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.get.network_info"><code>get.network_info</code></a>: Return basic information for the newtork graph created, including number of nodes and edges.</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.kiara_plugin.playground.modules.mariella.add_column"><code>kiara_plugin.playground.modules.mariella.add_column</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.onboard.gml_file"><code>onboard.gml_file</code></a>: This is a preliminary module for onboarding network data from gml files. It will likely be replaced by more generic onboarding modules when those are ready.</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.kiara_plugin.playground.modules.mariella.file_name_metadata"><code>kiara_plugin.playground.modules.mariella.file_name_metadata</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.playground.get_lineage_data"><code>playground.get_lineage_data</code></a>: Get lineage data to display in visualization.</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.kiara_plugin.playground.modules.mariella.map_column"><code>kiara_plugin.playground.modules.mariella.map_column</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.playground.tm_dash.add_column"><code>playground.tm_dash.add_column</code></a>: -- n/a --</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.kiara_plugin.playground.modules.mariella.table_sample"><code>kiara_plugin.playground.modules.mariella.table_sample</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.playground.tm_dash.file_name_metadata"><code>playground.tm_dash.file_name_metadata</code></a>: -- n/a --</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.kiara_plugin.playground.modules.mariella.viz_data_query"><code>kiara_plugin.playground.modules.mariella.viz_data_query</code></a>: -- n/a --</p>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.playground.tm_dash.map_column"><code>playground.tm_dash.map_column</code></a>: -- n/a --</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.playground.tm_dash.table_sample"><code>playground.tm_dash.table_sample</code></a>: -- n/a --</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.playground.tm_dash.viz_data_query"><code>playground.tm_dash.viz_data_query</code></a>: -- n/a --</p>
 </li>
 </ul>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h2>
@@ -955,7 +1057,7 @@
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      <script src="assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>

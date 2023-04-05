@@ -17,7 +17,7 @@
         <link rel="next" href="../../usage/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.14">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.113286f1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7a7fce14.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kiara_info.operations.create.betweenness_rank_list" class="md-skip">
+        <a href="#kiara_info.operations.compute.modularity_group" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="kiara_plugin.playground" class="md-header__button md-logo" aria-label="kiara_plugin.playground" data-md-component="logo">
       
@@ -308,6 +310,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#kiara_info.operations.compute.modularity_group" class="md-nav__link">
+    compute.modularity_group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_info.operations.create.betweenness_rank_list" class="md-nav__link">
     create.betweenness_rank_list
   </a>
@@ -350,36 +359,50 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.add_column" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.add_column
+  <a href="#kiara_info.operations.onboard.gml_file" class="md-nav__link">
+    onboard.gml_file
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.file_name_metadata" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.file_name_metadata
+  <a href="#kiara_info.operations.playground.get_lineage_data" class="md-nav__link">
+    playground.get_lineage_data
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.map_column" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.map_column
+  <a href="#kiara_info.operations.playground.tm_dash.add_column" class="md-nav__link">
+    playground.tm_dash.add_column
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.table_sample" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.table_sample
+  <a href="#kiara_info.operations.playground.tm_dash.file_name_metadata" class="md-nav__link">
+    playground.tm_dash.file_name_metadata
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.viz_data_query" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.viz_data_query
+  <a href="#kiara_info.operations.playground.tm_dash.map_column" class="md-nav__link">
+    playground.tm_dash.map_column
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.playground.tm_dash.table_sample" class="md-nav__link">
+    playground.tm_dash.table_sample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.playground.tm_dash.viz_data_query" class="md-nav__link">
+    playground.tm_dash.viz_data_query
   </a>
   
 </li>
@@ -618,20 +641,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/kiara_plugin/playground/modules/caitlin/centrality_measures_module/" class="md-nav__link">
-        centrality_measures_module
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../reference/kiara_plugin/playground/modules/caitlin/cutpoints_module/" class="md-nav__link">
         cutpoints_module
       </a>
@@ -700,8 +709,50 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/kiara_plugin/playground/modules/lena/centrality_measures_module/" class="md-nav__link">
+        centrality_measures_module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/kiara_plugin/playground/modules/lena/example_module/" class="md-nav__link">
         example_module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/kiara_plugin/playground/modules/lena/modularity/" class="md-nav__link">
+        modularity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/kiara_plugin/playground/modules/lena/onboarding/" class="md-nav__link">
+        onboarding
       </a>
     </li>
   
@@ -720,10 +771,64 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1_3_3" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../reference/kiara_plugin/playground/modules/mariella/__init__/">mariella</a>
+          
+            <label for="__nav_5_1_1_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_5_1_1_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_1_1_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          mariella
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../reference/kiara_plugin/playground/modules/mariella/" class="md-nav__link">
-        mariella
+      <a href="../../reference/kiara_plugin/playground/modules/mariella/tm_dash/" class="md-nav__link">
+        tm_dash
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/kiara_plugin/playground/modules/mariella/viz_display/" class="md-nav__link">
+        viz_display
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -809,6 +914,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#kiara_info.operations.compute.modularity_group" class="md-nav__link">
+    compute.modularity_group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_info.operations.create.betweenness_rank_list" class="md-nav__link">
     create.betweenness_rank_list
   </a>
@@ -851,36 +963,50 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.add_column" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.add_column
+  <a href="#kiara_info.operations.onboard.gml_file" class="md-nav__link">
+    onboard.gml_file
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.file_name_metadata" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.file_name_metadata
+  <a href="#kiara_info.operations.playground.get_lineage_data" class="md-nav__link">
+    playground.get_lineage_data
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.map_column" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.map_column
+  <a href="#kiara_info.operations.playground.tm_dash.add_column" class="md-nav__link">
+    playground.tm_dash.add_column
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.table_sample" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.table_sample
+  <a href="#kiara_info.operations.playground.tm_dash.file_name_metadata" class="md-nav__link">
+    playground.tm_dash.file_name_metadata
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.viz_data_query" class="md-nav__link">
-    kiara_plugin.playground.modules.mariella.viz_data_query
+  <a href="#kiara_info.operations.playground.tm_dash.map_column" class="md-nav__link">
+    playground.tm_dash.map_column
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.playground.tm_dash.table_sample" class="md-nav__link">
+    playground.tm_dash.table_sample
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.playground.tm_dash.viz_data_query" class="md-nav__link">
+    playground.tm_dash.viz_data_query
   </a>
   
 </li>
@@ -902,7 +1028,86 @@
 
   <h1>operations</h1>
 
-<h3 id="kiara_info.operations.create.betweenness_rank_list"><code>create.betweenness_rank_list</code><a class="headerlink" href="#kiara_info.operations.create.betweenness_rank_list" title="Permanent link">&para;</a></h3>
+<h3 id="kiara_info.operations.compute.modularity_group"><code>compute.modularity_group</code><a class="headerlink" href="#kiara_info.operations.compute.modularity_group" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Calculate modularity for each node and attach modularity group number to node list as attribute.</p>
+<p>This networkX based function uses Clauset-Newman-Moore greedy modularity maximization to find the community partition with the largest modularity.</p>
+<p>Modularity community is a density-based community detection method that investigates the structural composition of a network.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_data</td>
+<td>network_data</td>
+<td>The network data to analyze.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>number_of_communities</td>
+<td>integer</td>
+<td>Number of communities into which the network should be partitioned. This is a user defined number that can be above or below maximum modularity.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>modularity_network</td>
+<td>network_data</td>
+<td>Updated network data with modularity group assigned as a node attribute.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>maximum_modularity</td>
+<td>integer</td>
+<td>The number of communities at which maximum modularity is reached for this network. If the &#39;number_of_communities&#39; is manually set, this number might deviate from the manually computed number.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.create.betweenness_rank_list"><code>create.betweenness_rank_list</code><a class="headerlink" href="#kiara_info.operations.create.betweenness_rank_list" title="Permanent link">&para;</a></h3>
 
 
 <table>
@@ -935,6 +1140,27 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 <td>The network graph being queried.</td>
 <td>yes</td>
 <td></td>
+    </tr>
+
+<td>weighted_betweenness</td>
+<td>boolean</td>
+<td>Boolean to indicate whether to calculate weighted betweenness as well as unweighted betweenness.</td>
+<td>no</td>
+<td>False</td>
+    </tr>
+
+<td>weight_column_name</td>
+<td>string</td>
+<td>The name of the column in the edge table containing data for the &#39;weight&#39; of an edge. If there is a column already named &#39;weight&#39;, this will be automatically selected. If otherwise left empty, weight is calculated by aggregrating parallel edges where edge weight is assigned a weight of 1.</td>
+<td>no</td>
+<td>weight</td>
+    </tr>
+
+<td>weight_meaning</td>
+<td>boolean</td>
+<td>How the weights given should be interpreted. If &#39;True&#39;, weight will be defined positively as &#39;strength&#39;, and these edges will be prioritised in shortest path calculations. If &#39;False&#39;, weight will be defined negatively as &#39;cost&#39; or &#39;distance&#39;, and these edges will be avoided in shortest path calculations.</td>
+<td>no</td>
+<td>True</td>
     </tr>
 
     </tbody>
@@ -1008,6 +1234,27 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 <td>The network graph being queried.</td>
 <td>yes</td>
 <td></td>
+    </tr>
+
+<td>weighted_closeness</td>
+<td>boolean</td>
+<td>Boolean to indicate whether to calculate weighted closeness as well as unweighted closeness.</td>
+<td>no</td>
+<td>False</td>
+    </tr>
+
+<td>weight_column_name</td>
+<td>string</td>
+<td>The name of the column in the edge table containing data for the &#39;weight&#39; of an edge. If there is a column already named &#39;weight&#39;, this will be automatically selected. If otherwise left empty, weight is calculated by aggregrating parallel edges where edge weight is assigned a weight of 1.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+<td>weight_meaning</td>
+<td>boolean</td>
+<td>How the weights given should be interpreted. If &#39;True&#39;, weight will be defined positively as &#39;strength&#39;, and these edges will be prioritised in shortest path calculations. If &#39;False&#39;, weight will be defined negatively as &#39;cost&#39; or &#39;distance&#39;, and these edges will be avoided in shortest path calculations.</td>
+<td>no</td>
+<td>True</td>
     </tr>
 
     </tbody>
@@ -1250,6 +1497,27 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 <td>1000</td>
     </tr>
 
+<td>weighted_eigenvector</td>
+<td>boolean</td>
+<td>Boolean to indicate whether to calculate weighted eigenvector as well as unweighted eigenvector.</td>
+<td>no</td>
+<td>False</td>
+    </tr>
+
+<td>weight_column_name</td>
+<td>string</td>
+<td>The name of the column in the edge table containing data for the &#39;weight&#39; of an edge. If there is a column already named &#39;weight&#39;, this will be automatically selected. If otherwise left empty, weight is calculated by aggregrating parallel edges where edge weight is assigned a weight of 1.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+<td>weight_meaning</td>
+<td>boolean</td>
+<td>How the weights given should be interpreted. If &#39;True&#39;, weight will be defined positively as &#39;strength&#39;, and these edges will be prioritised in shortest path calculations. If &#39;False&#39;, weight will be defined negatively as &#39;cost&#39; or &#39;distance&#39;, and these edges will be avoided in shortest path calculations.</td>
+<td>no</td>
+<td>True</td>
+    </tr>
+
     </tbody>
 </table>
 </td>
@@ -1359,7 +1627,141 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 </table>
 </td>
     </tr>
-</table><h3 id="kiara_info.operations.kiara_plugin.playground.modules.mariella.add_column"><code>kiara_plugin.playground.modules.mariella.add_column</code><a class="headerlink" href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.add_column" title="Permanent link">&para;</a></h3>
+</table><h3 id="kiara_info.operations.onboard.gml_file"><code>onboard.gml_file</code><a class="headerlink" href="#kiara_info.operations.onboard.gml_file" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>This is a preliminary module for onboarding network data from gml files. It will likely be replaced by more generic onboarding modules when those are ready.</p>
+<p>Based on networkX deserialise GML file method: https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.gml.read_gml.html#networkx.readwrite.gml.read_gml</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>path</td>
+<td>string</td>
+<td>The path to the local file.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>label</td>
+<td>string</td>
+<td>The node attribute that holds the &#39;label&#39; information. Set this input to &#39;id&#39; when there is no &#39;label&#39; attribute in gml file.</td>
+<td>no</td>
+<td>label</td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_data</td>
+<td>network_data</td>
+<td>The network/graph data.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.playground.get_lineage_data"><code>playground.get_lineage_data</code><a class="headerlink" href="#kiara_info.operations.playground.get_lineage_data" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Get lineage data to display in visualization.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>table</td>
+<td>table</td>
+<td>The table for which we need lineage data.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>lineage_dict</td>
+<td>dict</td>
+<td>The dict containing lineage data.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.playground.tm_dash.add_column"><code>playground.tm_dash.add_column</code><a class="headerlink" href="#kiara_info.operations.playground.tm_dash.add_column" title="Permanent link">&para;</a></h3>
 
 
 <table>
@@ -1429,7 +1831,7 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 </table>
 </td>
     </tr>
-</table><h3 id="kiara_info.operations.kiara_plugin.playground.modules.mariella.file_name_metadata"><code>kiara_plugin.playground.modules.mariella.file_name_metadata</code><a class="headerlink" href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.file_name_metadata" title="Permanent link">&para;</a></h3>
+</table><h3 id="kiara_info.operations.playground.tm_dash.file_name_metadata"><code>playground.tm_dash.file_name_metadata</code><a class="headerlink" href="#kiara_info.operations.playground.tm_dash.file_name_metadata" title="Permanent link">&para;</a></h3>
 
 
 <table>
@@ -1506,7 +1908,7 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 </table>
 </td>
     </tr>
-</table><h3 id="kiara_info.operations.kiara_plugin.playground.modules.mariella.map_column"><code>kiara_plugin.playground.modules.mariella.map_column</code><a class="headerlink" href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.map_column" title="Permanent link">&para;</a></h3>
+</table><h3 id="kiara_info.operations.playground.tm_dash.map_column"><code>playground.tm_dash.map_column</code><a class="headerlink" href="#kiara_info.operations.playground.tm_dash.map_column" title="Permanent link">&para;</a></h3>
 
 
 <table>
@@ -1590,7 +1992,7 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 </table>
 </td>
     </tr>
-</table><h3 id="kiara_info.operations.kiara_plugin.playground.modules.mariella.table_sample"><code>kiara_plugin.playground.modules.mariella.table_sample</code><a class="headerlink" href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.table_sample" title="Permanent link">&para;</a></h3>
+</table><h3 id="kiara_info.operations.playground.tm_dash.table_sample"><code>playground.tm_dash.table_sample</code><a class="headerlink" href="#kiara_info.operations.playground.tm_dash.table_sample" title="Permanent link">&para;</a></h3>
 
 
 <table>
@@ -1653,7 +2055,7 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 </table>
 </td>
     </tr>
-</table><h3 id="kiara_info.operations.kiara_plugin.playground.modules.mariella.viz_data_query"><code>kiara_plugin.playground.modules.mariella.viz_data_query</code><a class="headerlink" href="#kiara_info.operations.kiara_plugin.playground.modules.mariella.viz_data_query" title="Permanent link">&para;</a></h3>
+</table><h3 id="kiara_info.operations.playground.tm_dash.viz_data_query"><code>playground.tm_dash.viz_data_query</code><a class="headerlink" href="#kiara_info.operations.playground.tm_dash.viz_data_query" title="Permanent link">&para;</a></h3>
 
 
 <table>
@@ -1764,7 +2166,7 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      <script src="../../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>
