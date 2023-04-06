@@ -133,7 +133,7 @@ class Degree_Ranking(KiaraModule):
 
 class Betweenness_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for betweenness centrality.
-    In an undirected graph, betweenness centrality measures the percentage of all shortest paths that a node appears on, therefore measuring the likeliness that a node may act as a connector or 'intermediary'.
+    Betweenness centrality measures the percentage of all shortest paths that a node appears on, therefore measuring the likeliness that a node may act as a connector or 'intermediary'.
     
     Uses networkx.betweenness_centrality()
     https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.betweenness_centrality.html#networkx.algorithms.centrality.betweenness_centrality"""
@@ -185,7 +185,7 @@ class Betweenness_Ranking(KiaraModule):
                                                 # convenience methods it can give you:
                                                 # https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52
 
-        G = network_data.as_networkx_graph(nx.Graph)
+        G = network_data.as_networkx_graph(nx.DiGraph)
         G.remove_edges_from(list(nx.selfloop_edges(G)))
         
         def result_func(list):
@@ -220,7 +220,7 @@ class Betweenness_Ranking(KiaraModule):
                             
                 if wm == True:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_betweenness = nx.betweenness_centrality(graph, weight='weight')
                 nx.set_node_attributes(G, weight_betweenness, 'Weighted Betweenness Score')
@@ -244,7 +244,7 @@ class Betweenness_Ranking(KiaraModule):
                         
                 if wm == True:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_betweenness = nx.betweenness_centrality(graph, weight='weight')
                 nx.set_node_attributes(G, weight_betweenness, 'Weighted Betweenness Score')
@@ -258,7 +258,7 @@ class Betweenness_Ranking(KiaraModule):
 
 class Eigenvector_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for betweenness centrality.
-    In an undirected graph, eigenvector centrality measures the extent to which a node is connected to other nodes of importance or influence.
+    Eigenvector centrality measures the extent to which a node is connected to other nodes of importance or influence.
     
     Uses networkx.eigenvector_centrality()
     https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality"""
@@ -315,7 +315,7 @@ class Eigenvector_Ranking(KiaraModule):
                                                 # convenience methods it can give you:
                                                 # https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52
 
-        G = network_data.as_networkx_graph(nx.Graph)
+        G = network_data.as_networkx_graph(nx.DiGraph)
         G.remove_edges_from(list(nx.selfloop_edges(G)))
         
         def result_func(list):
@@ -350,7 +350,7 @@ class Eigenvector_Ranking(KiaraModule):
                             
                 if wm == False:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_eigenvector = nx.eigenvector_centrality(graph, weight='weight', max_iter=iterations)
                 nx.set_node_attributes(G, weight_eigenvector, 'Weighted Eigenvector Score')
@@ -374,7 +374,7 @@ class Eigenvector_Ranking(KiaraModule):
                         
                 if wm == False:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_eigenvector = nx.eigenvector_centrality(graph, weight='weight', max_iter=iterations)
                 nx.set_node_attributes(G, weight_eigenvector, 'Weighted Eigenvector Score')
@@ -388,7 +388,7 @@ class Eigenvector_Ranking(KiaraModule):
 
 class Closeness_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for closeness centrality.
-    In an undirected graph, closeness centrality measures the average shortest distance path between a node and all reachable nodes in the network.
+    Closeness centrality measures the average shortest distance path between a node and all reachable nodes in the network.
     
     Uses networkx.closeness_centrality()
     https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.closeness_centrality.html#networkx.algorithms.centrality.closeness_centrality"""
@@ -440,7 +440,7 @@ class Closeness_Ranking(KiaraModule):
                                                 # convenience methods it can give you:
                                                 # https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52
 
-        G = network_data.as_networkx_graph(nx.Graph)
+        G = network_data.as_networkx_graph(nx.DiGraph)
         G.remove_edges_from(list(nx.selfloop_edges(G)))
         
         def result_func(list):
@@ -475,7 +475,7 @@ class Closeness_Ranking(KiaraModule):
                             
                 if wm == True:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_closeness = nx.closeness_centrality(graph, weight='weight')
                 nx.set_node_attributes(G, weight_closeness, 'Weighted Closeness Score')
@@ -499,7 +499,7 @@ class Closeness_Ranking(KiaraModule):
                         
                 if wm == True:
                     for u,v,d in graph.edges(data=True):
-                        d['weight'] == 1/d['weight']
+                        d['weight'] == (1/d['weight'])
                 
                 weight_closeness = nx.closeness_centrality(graph, weight='weight')
                 nx.set_node_attributes(G, weight_closeness, 'Weighted Closeness Score')
