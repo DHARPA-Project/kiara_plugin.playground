@@ -352,8 +352,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.get.network_info" class="md-nav__link">
-    get.network_info
+  <a href="#kiara_info.operations.network_data.extract_largest_component" class="md-nav__link">
+    network_data.extract_largest_component
   </a>
   
 </li>
@@ -641,8 +641,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/kiara_plugin/playground/modules/caitlin/cutpoints_module/" class="md-nav__link">
-        cutpoints_module
+      <a href="../../reference/kiara_plugin/playground/modules/caitlin/centrality_measures_module/" class="md-nav__link">
+        centrality_measures_module
       </a>
     </li>
   
@@ -655,8 +655,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/kiara_plugin/playground/modules/caitlin/network_info_module/" class="md-nav__link">
-        network_info_module
+      <a href="../../reference/kiara_plugin/playground/modules/caitlin/cutpoints_module/" class="md-nav__link">
+        cutpoints_module
       </a>
     </li>
   
@@ -709,8 +709,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/kiara_plugin/playground/modules/lena/centrality_measures_module/" class="md-nav__link">
-        centrality_measures_module
+      <a href="../../reference/kiara_plugin/playground/modules/lena/components/" class="md-nav__link">
+        components
       </a>
     </li>
   
@@ -956,8 +956,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.get.network_info" class="md-nav__link">
-    get.network_info
+  <a href="#kiara_info.operations.network_data.extract_largest_component" class="md-nav__link">
+    network_data.extract_largest_component
   </a>
   
 </li>
@@ -1114,7 +1114,7 @@
     <tr>
         <td>Documentation</td>
         <td><p>Creates an ordered table with the rank and raw score for betweenness centrality.</p>
-<p>In an undirected graph, betweenness centrality measures the percentage of all shortest paths that a node appears on, therefore measuring the likeliness that a node may act as a connector or 'intermediary'.</p>
+<p>Betweenness centrality measures the percentage of all shortest paths that a node appears on, therefore measuring the likeliness that a node may act as a connector or 'intermediary'.</p>
 <p>Uses networkx.betweenness_centrality()
 https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.betweenness_centrality.html#networkx.algorithms.centrality.betweenness_centrality</p>
 </td>
@@ -1153,7 +1153,7 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 <td>string</td>
 <td>The name of the column in the edge table containing data for the &#39;weight&#39; of an edge. If there is a column already named &#39;weight&#39;, this will be automatically selected. If otherwise left empty, weight is calculated by aggregrating parallel edges where edge weight is assigned a weight of 1.</td>
 <td>no</td>
-<td>weight</td>
+<td></td>
     </tr>
 
 <td>weight_meaning</td>
@@ -1208,7 +1208,7 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
     <tr>
         <td>Documentation</td>
         <td><p>Creates an ordered table with the rank and raw score for closeness centrality.</p>
-<p>In an undirected graph, closeness centrality measures the average shortest distance path between a node and all reachable nodes in the network.</p>
+<p>Closeness centrality measures the average shortest distance path between a node and all reachable nodes in the network.</p>
 <p>Uses networkx.closeness_centrality()
 https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.closeness_centrality.html#networkx.algorithms.centrality.closeness_centrality</p>
 </td>
@@ -1462,7 +1462,7 @@ https://networkx.org/documentation/stable/reference/generated/networkx.classes.f
     <tr>
         <td>Documentation</td>
         <td><p>Creates an ordered table with the rank and raw score for betweenness centrality.</p>
-<p>In an undirected graph, eigenvector centrality measures the extent to which a node is connected to other nodes of importance or influence.</p>
+<p>Eigenvector centrality measures the extent to which a node is connected to other nodes of importance or influence.</p>
 <p>Uses networkx.eigenvector_centrality()
 https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality</p>
 </td>
@@ -1556,14 +1556,18 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 </table>
 </td>
     </tr>
-</table><h3 id="kiara_info.operations.get.network_info"><code>get.network_info</code><a class="headerlink" href="#kiara_info.operations.get.network_info" title="Permanent link">&para;</a></h3>
+</table><h3 id="kiara_info.operations.network_data.extract_largest_component"><code>network_data.extract_largest_component</code><a class="headerlink" href="#kiara_info.operations.network_data.extract_largest_component" title="Permanent link">&para;</a></h3>
 
 
 <table>
     <tr>
         <td>Documentation</td>
-        <td><p>Return basic information for the newtork graph created, including number of nodes and edges.</p>
-<p>Needs to specify if graph is directed or undirected, but will default to undirected.</p>
+        <td><p>Extract the largest connected component from this network data.</p>
+<p>This module analyses network data and checks if it contains clusters, and if so, how many. If all nodes are connected
+to each other, the input data will be returned as largest component and the 'other_components' output will be unset.</p>
+<p>Otherwise, the dataset will be split up into nodes of the largest component, and nodes that are not part of that.
+Then this module will create 2 new network data items, one for the largest component, and one for the other components that excludes
+the nodes and edges that are part of the largest component.</p>
 </td>
     </tr>
     <tr>
@@ -1584,16 +1588,9 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 
 <td>network_data</td>
 <td>network_data</td>
-<td>The network graph being queried.</td>
+<td>The network data to analyze.</td>
 <td>yes</td>
 <td></td>
-    </tr>
-
-<td>graph_type</td>
-<td>string</td>
-<td>The graph type: directed or undirected</td>
-<td>no</td>
-<td>undirected</td>
     </tr>
 
     </tbody>
@@ -1616,9 +1613,30 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
     <tbody>
     <tr>
 
-<td>network_result</td>
-<td>string</td>
-<td>Information about the network graph.</td>
+<td>largest_component</td>
+<td>network_data</td>
+<td>A sub-graph of the largest component of the graph.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>other_components</td>
+<td>network_data</td>
+<td>A sub-graph of the other components of the graph, excluding the nodes (and edges referencing those nodes) contained in the largest component.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+<td>number_of_components</td>
+<td>integer</td>
+<td>The number of components in the graph.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>is_connected</td>
+<td>boolean</td>
+<td>Whether the graph is connected or not.</td>
 <td>yes</td>
 <td></td>
     </tr>

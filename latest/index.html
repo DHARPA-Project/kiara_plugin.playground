@@ -584,8 +584,8 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/kiara_plugin/playground/modules/caitlin/cutpoints_module/" class="md-nav__link">
-        cutpoints_module
+      <a href="reference/kiara_plugin/playground/modules/caitlin/centrality_measures_module/" class="md-nav__link">
+        centrality_measures_module
       </a>
     </li>
   
@@ -598,8 +598,8 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/kiara_plugin/playground/modules/caitlin/network_info_module/" class="md-nav__link">
-        network_info_module
+      <a href="reference/kiara_plugin/playground/modules/caitlin/cutpoints_module/" class="md-nav__link">
+        cutpoints_module
       </a>
     </li>
   
@@ -652,8 +652,8 @@
   
   
     <li class="md-nav__item">
-      <a href="reference/kiara_plugin/playground/modules/lena/centrality_measures_module/" class="md-nav__link">
-        centrality_measures_module
+      <a href="reference/kiara_plugin/playground/modules/lena/components/" class="md-nav__link">
+        components
       </a>
     </li>
   
@@ -925,12 +925,6 @@
 <h3 id="module_types">module_types<a class="headerlink" href="#module_types" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.create.cut_point_list"><code>create.cut_point_list</code></a>: Create a list of nodes that are cut-points.</p>
-</li>
-<li>
-<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.get.network_info"><code>get.network_info</code></a>: Return basic information for the newtork graph created, including number of nodes and edges.</p>
-</li>
-<li>
 <p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.create.degree_rank_list"><code>create.degree_rank_list</code></a>: Creates an ordered table with the rank and raw score for degree centrality.</p>
 </li>
 <li>
@@ -941,6 +935,12 @@
 </li>
 <li>
 <p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.create.closeness_rank_list"><code>create.closeness_rank_list</code></a>: Creates an ordered table with the rank and raw score for closeness centrality.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.create.cut_point_list"><code>create.cut_point_list</code></a>: Create a list of nodes that are cut-points.</p>
+</li>
+<li>
+<p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.network_data.extract_largest_component"><code>network_data.extract_largest_component</code></a>: Extract the largest connected component from this network data.</p>
 </li>
 <li>
 <p><a class="autorefs autorefs-internal" href="info/module_types/#kiara_info.module_types.compute.modularity_group"><code>compute.modularity_group</code></a>: Calculate modularity for each node and attach modularity group number to node list as attribute.</p>
@@ -988,7 +988,7 @@
 <p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.create.eigenvector_rank_list"><code>create.eigenvector_rank_list</code></a>: Creates an ordered table with the rank and raw score for betweenness centrality.</p>
 </li>
 <li>
-<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.get.network_info"><code>get.network_info</code></a>: Return basic information for the newtork graph created, including number of nodes and edges.</p>
+<p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.network_data.extract_largest_component"><code>network_data.extract_largest_component</code></a>: Extract the largest connected component from this network data.</p>
 </li>
 <li>
 <p><a class="autorefs autorefs-internal" href="info/operations/#kiara_info.operations.onboard.gml_file"><code>onboard.gml_file</code></a>: This is a preliminary module for onboarding network data from gml files. It will likely be replaced by more generic onboarding modules when those are ready.</p>
