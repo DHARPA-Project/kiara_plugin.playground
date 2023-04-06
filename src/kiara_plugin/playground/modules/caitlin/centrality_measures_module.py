@@ -288,7 +288,7 @@ class Eigenvector_Ranking(KiaraModule):
                                                 # convenience methods it can give you:
                                                 # https://github.com/DHARPA-Project/kiara_plugin.network_analysis/blob/develop/src/kiara_plugin/network_analysis/models.py#L52
 
-        G = network_data.as_networkx_graph(nx.DiGraph)
+        G = network_data.as_networkx_graph(nx.Graph)
         G.remove_edges_from(list(nx.selfloop_edges(G)))
         
         def result_func(list):
@@ -310,7 +310,7 @@ class Eigenvector_Ranking(KiaraModule):
         df.columns = ['Rank', 'Node', 'Score']
         
         if wd == True:
-            graph = network_data.as_networkx_graph(nx.DiGraph)
+            graph = network_data.as_networkx_graph(nx.Graph)
             edge_weight = nx.get_edge_attributes(graph, weight_name)
             for u,v,key in edge_weight:
                 nx.set_edge_attributes(graph, edge_weight, 'weight')
@@ -319,7 +319,7 @@ class Eigenvector_Ranking(KiaraModule):
                 for u,v,d in graph.edges(data=True):
                     d['weight'] == (1/d['weight'])
                 
-            weight_eigenvector = nx.eigenvector_centrality(graph, weight='weight', max_iter=iterations)
+            weight_eigenvector = nx.eigenvector_centrality(graph, weight='weight', max_iter=100000)
             nx.set_node_attributes(G, weight_eigenvector, 'Weighted Eigenvector Score')
                         
             df2 = pd.DataFrame(list(weight_eigenvector.items()), columns=['Node', 'Weighted Eigenvector'])
