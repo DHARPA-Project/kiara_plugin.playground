@@ -101,6 +101,9 @@ class Degree_Ranking(KiaraModule):
                 for node in graph:
                     weight_degree[node]= graph.degree(node, weight='weight')
                 nx.set_node_attributes(G, weight_degree, 'Weighted Degree Score')
+                
+                edge_weight = nx.get_edge_attributes(graph, 'weight')
+                nx.set_edge_attributes(G, edge_weight, 'weight')
                         
                 df2 = pd.DataFrame(list(weight_degree.items()), columns=['Node', 'Weighted Degree'])
                 df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
@@ -148,7 +151,7 @@ class Betweenness_Ranking(KiaraModule):
             },
             "weighted_betweenness":{
                 "type": "boolean",
-                "default": False,
+                "default": True,
                 "doc": "Boolean to indicate whether to calculate weighted betweenness as well as unweighted betweenness."
             },
             "weight_column_name": {
@@ -207,50 +210,20 @@ class Betweenness_Ranking(KiaraModule):
         df.columns = ['Rank', 'Node', 'Score']
         
         if wd == True:
-            if weight_name == '':
-                MG = network_data.as_networkx_graph(nx.MultiDiGraph)
-            
-                graph = nx.DiGraph()
-                for u,v,data in MG.edges(data=True):
-                    w = data['weight'] if 'weight' in data else 1
-                    if graph.has_edge(u,v):
-                        graph[u][v]['weight'] += w
-                    else:
-                        graph.add_edge(u, v, weight=w)
-                            
-                if wm == True:
-                    for u,v,d in graph.edges(data=True):
-                        d['weight'] == (1/d['weight'])
-                
-                weight_betweenness = nx.betweenness_centrality(graph, weight='weight')
-                nx.set_node_attributes(G, weight_betweenness, 'Weighted Betweenness Score')
+            graph = network_data.as_networkx_graph(nx.DiGraph)
+            edge_weight = nx.get_edge_attributes(graph, weight_name)
+            for u,v,key in edge_weight:
+                nx.set_edge_attributes(graph, edge_weight, 'weight')
                         
-                df2 = pd.DataFrame(list(weight_betweenness.items()), columns=['Node', 'Weighted Betweenness'])
-                df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
+            if wm == True:
+                for u,v,d in graph.edges(data=True):
+                    d['weight'] == (1/d['weight'])
                 
-            if weight_name != '':
-                MG = network_data.as_networkx_graph(nx.MultiDiGraph)
-                edge_weight = nx.get_edge_attributes(MG, weight_name)
-                for u,v,key in edge_weight:
-                    nx.set_edge_attributes(MG, edge_weight, 'weight')
-            
-                graph = nx.DiGraph()
-                for u,v,data in MG.edges(data=True):
-                    w = data['weight'] if 'weight' in data else 1
-                    if graph.has_edge(u,v):
-                        graph[u][v]['weight'] += w
-                    else:
-                        graph.add_edge(u, v, weight=w)
-                        
-                if wm == True:
-                    for u,v,d in graph.edges(data=True):
-                        d['weight'] == (1/d['weight'])
-                
-                weight_betweenness = nx.betweenness_centrality(graph, weight='weight')
-                nx.set_node_attributes(G, weight_betweenness, 'Weighted Betweenness Score')
-                        
-                df2 = pd.DataFrame(list(weight_betweenness.items()), columns=['Node', 'Weighted Betweenness'])
-                df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
+            weight_betweenness = nx.betweenness_centrality(graph, weight='weight')
+            nx.set_node_attributes(G, weight_betweenness, 'Weighted Betweenness Score')
+                    
+            df2 = pd.DataFrame(list(weight_betweenness.items()), columns=['Node', 'Weighted Betweenness'])
+            df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
          
         attribute_network = NetworkData.create_from_networkx_graph(G)
         
@@ -277,7 +250,7 @@ class Eigenvector_Ranking(KiaraModule):
             },
             "weighted_eigenvector":{
                 "type": "boolean",
-                "default": False,
+                "default": True,
                 "doc": "Boolean to indicate whether to calculate weighted eigenvector as well as unweighted eigenvector."
             },
             "weight_column_name": {
@@ -337,50 +310,20 @@ class Eigenvector_Ranking(KiaraModule):
         df.columns = ['Rank', 'Node', 'Score']
         
         if wd == True:
-            if weight_name == '':
-                MG = network_data.as_networkx_graph(nx.MultiDiGraph)
-            
-                graph = nx.DiGraph()
-                for u,v,data in MG.edges(data=True):
-                    w = data['weight'] if 'weight' in data else 1
-                    if graph.has_edge(u,v):
-                        graph[u][v]['weight'] += w
-                    else:
-                        graph.add_edge(u, v, weight=w)
-                            
-                if wm == False:
-                    for u,v,d in graph.edges(data=True):
-                        d['weight'] == (1/d['weight'])
+            graph = network_data.as_networkx_graph(nx.DiGraph)
+            edge_weight = nx.get_edge_attributes(graph, weight_name)
+            for u,v,key in edge_weight:
+                nx.set_edge_attributes(graph, edge_weight, 'weight')
+
+            if wm == False:
+                for u,v,d in graph.edges(data=True):
+                    d['weight'] == (1/d['weight'])
                 
-                weight_eigenvector = nx.eigenvector_centrality(graph, weight='weight', max_iter=iterations)
-                nx.set_node_attributes(G, weight_eigenvector, 'Weighted Eigenvector Score')
+            weight_eigenvector = nx.eigenvector_centrality(graph, weight='weight', max_iter=iterations)
+            nx.set_node_attributes(G, weight_eigenvector, 'Weighted Eigenvector Score')
                         
-                df2 = pd.DataFrame(list(weight_eigenvector.items()), columns=['Node', 'Weighted Eigenvector'])
-                df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
-                
-            if weight_name != '':
-                MG = network_data.as_networkx_graph(nx.MultiDiGraph)
-                edge_weight = nx.get_edge_attributes(MG, weight_name)
-                for u,v,key in edge_weight:
-                    nx.set_edge_attributes(MG, edge_weight, 'weight')
-            
-                graph = nx.DiGraph()
-                for u,v,data in MG.edges(data=True):
-                    w = data['weight'] if 'weight' in data else 1
-                    if graph.has_edge(u,v):
-                        graph[u][v]['weight'] += w
-                    else:
-                        graph.add_edge(u, v, weight=w)
-                        
-                if wm == False:
-                    for u,v,d in graph.edges(data=True):
-                        d['weight'] == (1/d['weight'])
-                
-                weight_eigenvector = nx.eigenvector_centrality(graph, weight='weight', max_iter=iterations)
-                nx.set_node_attributes(G, weight_eigenvector, 'Weighted Eigenvector Score')
-                        
-                df2 = pd.DataFrame(list(weight_eigenvector.items()), columns=['Node', 'Weighted Eigenvector'])
-                df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
+            df2 = pd.DataFrame(list(weight_eigenvector.items()), columns=['Node', 'Weighted Eigenvector'])
+            df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
         
         attribute_network = NetworkData.create_from_networkx_graph(G)
         
@@ -403,7 +346,7 @@ class Closeness_Ranking(KiaraModule):
             },
             "weighted_closeness":{
                 "type": "boolean",
-                "default": False,
+                "default": True,
                 "doc": "Boolean to indicate whether to calculate weighted closeness as well as unweighted closeness."
             },
             "weight_column_name": {
@@ -462,50 +405,20 @@ class Closeness_Ranking(KiaraModule):
         df.columns = ['Rank', 'Node', 'Score']
         
         if wd == True:
-            if weight_name == '':
-                MG = network_data.as_networkx_graph(nx.MultiDiGraph)
-            
-                graph = nx.DiGraph()
-                for u,v,data in MG.edges(data=True):
-                    w = data['weight'] if 'weight' in data else 1
-                    if graph.has_edge(u,v):
-                        graph[u][v]['weight'] += w
-                    else:
-                        graph.add_edge(u, v, weight=w)
-                            
-                if wm == True:
-                    for u,v,d in graph.edges(data=True):
-                        d['weight'] == (1/d['weight'])
-                
-                weight_closeness = nx.closeness_centrality(graph, weight='weight')
-                nx.set_node_attributes(G, weight_closeness, 'Weighted Closeness Score')
+            graph = network_data.as_networkx_graph(nx.DiGraph)
+            edge_weight = nx.get_edge_attributes(graph, weight_name)
+            for u,v,key in edge_weight:
+                nx.set_edge_attributes(graph, edge_weight, 'weight')
                         
-                df2 = pd.DataFrame(list(weight_closeness.items()), columns=['Node', 'Weighted Closeness'])
-                df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
+            if wm == True:
+                for u,v,d in graph.edges(data=True):
+                    d['weight'] == (1/d['weight'])
                 
-            if weight_name != '':
-                MG = network_data.as_networkx_graph(nx.MultiDiGraph)
-                edge_weight = nx.get_edge_attributes(MG, weight_name)
-                for u,v,key in edge_weight:
-                    nx.set_edge_attributes(MG, edge_weight, 'weight')
-            
-                graph = nx.DiGraph()
-                for u,v,data in MG.edges(data=True):
-                    w = data['weight'] if 'weight' in data else 1
-                    if graph.has_edge(u,v):
-                        graph[u][v]['weight'] += w
-                    else:
-                        graph.add_edge(u, v, weight=w)
+            weight_closeness = nx.closeness_centrality(graph, weight='weight')
+            nx.set_node_attributes(G, weight_closeness, 'Weighted Closeness Score')
                         
-                if wm == True:
-                    for u,v,d in graph.edges(data=True):
-                        d['weight'] == (1/d['weight'])
-                
-                weight_closeness = nx.closeness_centrality(graph, weight='weight')
-                nx.set_node_attributes(G, weight_closeness, 'Weighted Closeness Score')
-                        
-                df2 = pd.DataFrame(list(weight_closeness.items()), columns=['Node', 'Weighted Closeness'])
-                df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
+            df2 = pd.DataFrame(list(weight_closeness.items()), columns=['Node', 'Weighted Closeness'])
+            df = df.merge(df2, how='left', on='Node').reset_index(drop=True)
         
         attribute_network = NetworkData.create_from_networkx_graph(G)
         
