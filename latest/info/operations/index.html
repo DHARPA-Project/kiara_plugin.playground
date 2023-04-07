@@ -1115,7 +1115,7 @@
         <td>Documentation</td>
         <td><p>Creates an ordered table with the rank and raw score for betweenness centrality.</p>
 <p>Betweenness centrality measures the percentage of all shortest paths that a node appears on, therefore measuring the likeliness that a node may act as a connector or 'intermediary'.</p>
-<p>Uses networkx.betweenness_centrality()
+<p>Uses a directed graph and networkx.betweenness_centrality()
 https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.betweenness_centrality.html#networkx.algorithms.centrality.betweenness_centrality</p>
 </td>
     </tr>
@@ -1209,7 +1209,7 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
         <td>Documentation</td>
         <td><p>Creates an ordered table with the rank and raw score for closeness centrality.</p>
 <p>Closeness centrality measures the average shortest distance path between a node and all reachable nodes in the network.</p>
-<p>Uses networkx.closeness_centrality()
+<p>Uses a directed graph and networkx.closeness_centrality()
 https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.closeness_centrality.html#networkx.algorithms.centrality.closeness_centrality</p>
 </td>
     </tr>
@@ -1374,8 +1374,9 @@ https://networkx.org/documentation/stable/reference/algorithms/generated/network
 <table>
     <tr>
         <td>Documentation</td>
-        <td><p>Creates an ordered table with the rank and raw score for degree centrality.</p>
-<p>In an undirected graph, degree centrality measures the number of independent connections each node has.</p>
+        <td><p>Creates an ordered table with the rank and raw score for degree and weighted degree.</p>
+<p>Unweighted degree centrality uses an undirected graph and measures the number of independent connections each node has.
+Weighted degree centrality uses a directed graph and measures the total number of connections or weight attached to a node.</p>
 <p>Uses networkx degree.
 https://networkx.org/documentation/stable/reference/generated/networkx.classes.function.degree.html</p>
 </td>
@@ -1463,7 +1464,7 @@ https://networkx.org/documentation/stable/reference/generated/networkx.classes.f
         <td>Documentation</td>
         <td><p>Creates an ordered table with the rank and raw score for betweenness centrality.</p>
 <p>Eigenvector centrality measures the extent to which a node is connected to other nodes of importance or influence.</p>
-<p>Uses networkx.eigenvector_centrality()
+<p>Uses an undirected graph networkx.eigenvector_centrality()
 https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality</p>
 </td>
     </tr>

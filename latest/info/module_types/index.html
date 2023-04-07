@@ -1032,11 +1032,14 @@
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                
  <span style="font-style: italic">Documentation         </span>                                                         
  <span style="font-style: italic">                      </span>   Creates an ordered table with the rank and raw        
- <span style="font-style: italic">                      </span>   score for degree centrality.                          
+ <span style="font-style: italic">                      </span>   score for degree and weighted degree.                 
  <span style="font-style: italic">                      </span>                                                         
- <span style="font-style: italic">                      </span>   In an undirected graph, degree centrality measures    
- <span style="font-style: italic">                      </span>   the number of independent connections each node       
- <span style="font-style: italic">                      </span>   has.                                                  
+ <span style="font-style: italic">                      </span>   Unweighted degree centrality uses an undirected       
+ <span style="font-style: italic">                      </span>   graph and measures the number of independent          
+ <span style="font-style: italic">                      </span>   connections each node has. Weighted degree            
+ <span style="font-style: italic">                      </span>   centrality uses a directed graph and measures the     
+ <span style="font-style: italic">                      </span>   total number of connections or weight attached to a   
+ <span style="font-style: italic">                      </span>   node.                                                 
  <span style="font-style: italic">                      </span>                                                         
  <span style="font-style: italic">                      </span>   Uses networkx degree.                                 
  <span style="font-style: italic">                      </span>   https://networkx.org/documentation/stable/referenc…   
@@ -1074,7 +1077,8 @@
  <span style="font-style: italic">Processing source code</span>  ─────────────────────────────────────────────────────  
  <span style="font-style: italic">                      </span>   <span style="color: #66d9ef; text-decoration-color: #66d9ef; background-color: #ffffff">class</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff"> </span><span style="color: #a6e22e; text-decoration-color: #a6e22e; background-color: #ffffff">Degree_Ranking</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">(KiaraModule):</span>                    
  <span style="font-style: italic">                      </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"""Creates an ordered table with the rank and …</span>   
- <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    In an undirected graph, degree centrality meas…</span>   
+ <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Unweighted degree centrality uses an undirecte…</span>   
+ <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Weighted degree centrality uses a directed gra…</span>   
  <span style="font-style: italic">                      </span>                                                         
  <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Uses networkx degree.</span>                             
  <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    https://networkx.org/documentation/stable/refe…</span>   
@@ -1207,7 +1211,8 @@
  <span style="font-style: italic">                      </span>   therefore measuring the likeliness that a node may    
  <span style="font-style: italic">                      </span>   act as a connector or 'intermediary'.                 
  <span style="font-style: italic">                      </span>                                                         
- <span style="font-style: italic">                      </span>   Uses networkx.betweenness_centrality()                
+ <span style="font-style: italic">                      </span>   Uses a directed graph and                             
+ <span style="font-style: italic">                      </span>   networkx.betweenness_centrality()                     
  <span style="font-style: italic">                      </span>   https://networkx.org/documentation/stable/referenc…   
  <span style="font-style: italic">                      </span>                                                         
  <span style="font-style: italic">Author(s)             </span>                                                         
@@ -1245,7 +1250,7 @@
  <span style="font-style: italic">                      </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"""Creates an ordered table with the rank and …</span>   
  <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Betweenness centrality measures the percentage…</span>   
  <span style="font-style: italic">                      </span>                                                         
- <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Uses networkx.betweenness_centrality()</span>            
+ <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Uses a directed graph and networkx.betweenness…</span>   
  <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    https://networkx.org/documentation/stable/refe…</span>   
  <span style="font-style: italic">                      </span>                                                         
  <span style="font-style: italic">                      </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    _module_type_name </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">=</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff"> </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">'create.betweenness_rank_l…</span>   
@@ -1349,7 +1354,8 @@
  <span style="font-style: italic">                      </span>   a node is connected to other nodes of importance or   
  <span style="font-style: italic">                      </span>   influence.                                            
  <span style="font-style: italic">                      </span>                                                         
- <span style="font-style: italic">                      </span>   Uses networkx.eigenvector_centrality()                
+ <span style="font-style: italic">                      </span>   Uses an undirected graph                              
+ <span style="font-style: italic">                      </span>   networkx.eigenvector_centrality()                     
  <span style="font-style: italic">                      </span>   https://networkx.org/documentation/stable/referenc…   
  <span style="font-style: italic">                      </span>                                                         
  <span style="font-style: italic">Author(s)             </span>                                                         
@@ -1387,7 +1393,7 @@
  <span style="font-style: italic">                      </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"""Creates an ordered table with the rank and …</span>   
  <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Eigenvector centrality measures the extent to …</span>   
  <span style="font-style: italic">                      </span>                                                         
- <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Uses networkx.eigenvector_centrality()</span>            
+ <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Uses an undirected graph networkx.eigenvector_…</span>   
  <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    https://networkx.org/documentation/stable/refe…</span>   
  <span style="font-style: italic">                      </span>                                                         
  <span style="font-style: italic">                      </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    _module_type_name </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">=</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff"> </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">'create.eigenvector_rank_l…</span>   
@@ -1496,7 +1502,8 @@
  <span style="font-style: italic">                      </span>   distance path between a node and all reachable        
  <span style="font-style: italic">                      </span>   nodes in the network.                                 
  <span style="font-style: italic">                      </span>                                                         
- <span style="font-style: italic">                      </span>   Uses networkx.closeness_centrality()                  
+ <span style="font-style: italic">                      </span>   Uses a directed graph and                             
+ <span style="font-style: italic">                      </span>   networkx.closeness_centrality()                       
  <span style="font-style: italic">                      </span>   https://networkx.org/documentation/stable/referenc…   
  <span style="font-style: italic">                      </span>                                                         
  <span style="font-style: italic">Author(s)             </span>                                                         
@@ -1534,7 +1541,7 @@
  <span style="font-style: italic">                      </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">"""Creates an ordered table with the rank and …</span>   
  <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Closeness centrality measures the average shor…</span>   
  <span style="font-style: italic">                      </span>                                                         
- <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Uses networkx.closeness_centrality()</span>              
+ <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    Uses a directed graph and networkx.closeness_c…</span>   
  <span style="font-style: italic">                      </span>   <span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">    https://networkx.org/documentation/stable/refe…</span>   
  <span style="font-style: italic">                      </span>                                                         
  <span style="font-style: italic">                      </span>   <span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff">    _module_type_name </span><span style="color: #f92672; text-decoration-color: #f92672; background-color: #ffffff">=</span><span style="color: #f8f8f2; text-decoration-color: #f8f8f2; background-color: #ffffff"> </span><span style="color: #e6db74; text-decoration-color: #e6db74; background-color: #ffffff">'create.closeness_rank_lis…</span>   
