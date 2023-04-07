@@ -14,8 +14,9 @@ KIARA_METADATA = {
 }
 
 class Degree_Ranking(KiaraModule):
-    """Creates an ordered table with the rank and raw score for degree centrality.
-    In an undirected graph, degree centrality measures the number of independent connections each node has.
+    """Creates an ordered table with the rank and raw score for degree and weighted degree.
+    Unweighted degree centrality uses an undirected graph and measures the number of independent connections each node has.
+    Weighted degree centrality uses a directed graph and measures the total number of connections or weight attached to a node.
     
     Uses networkx degree.
     https://networkx.org/documentation/stable/reference/generated/networkx.classes.function.degree.html"""
@@ -138,7 +139,7 @@ class Betweenness_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for betweenness centrality.
     Betweenness centrality measures the percentage of all shortest paths that a node appears on, therefore measuring the likeliness that a node may act as a connector or 'intermediary'.
     
-    Uses networkx.betweenness_centrality()
+    Uses a directed graph and networkx.betweenness_centrality()
     https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.betweenness_centrality.html#networkx.algorithms.centrality.betweenness_centrality"""
     
     _module_type_name = 'create.betweenness_rank_list'
@@ -233,7 +234,7 @@ class Eigenvector_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for betweenness centrality.
     Eigenvector centrality measures the extent to which a node is connected to other nodes of importance or influence.
     
-    Uses networkx.eigenvector_centrality()
+    Uses an undirected graph networkx.eigenvector_centrality()
     https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality"""
    
     _module_type_name = 'create.eigenvector_rank_list'
@@ -333,7 +334,7 @@ class Closeness_Ranking(KiaraModule):
     """Creates an ordered table with the rank and raw score for closeness centrality.
     Closeness centrality measures the average shortest distance path between a node and all reachable nodes in the network.
     
-    Uses networkx.closeness_centrality()
+    Uses a directed graph and networkx.closeness_centrality()
     https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.closeness_centrality.html#networkx.algorithms.centrality.closeness_centrality"""
     
     _module_type_name = 'create.closeness_rank_list'
