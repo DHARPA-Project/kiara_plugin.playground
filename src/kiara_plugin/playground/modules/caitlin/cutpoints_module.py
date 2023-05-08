@@ -60,7 +60,7 @@ class CutPointsList(KiaraModule):
 
         attribute_network = NetworkData.create_from_networkx_graph(G)
         
-        outputs.set_values(network_result=cutpoints, centrality_network=attribute_network)
+        outputs.set_values(network_result=cutpoints, cut_network=attribute_network)
 
 
 
