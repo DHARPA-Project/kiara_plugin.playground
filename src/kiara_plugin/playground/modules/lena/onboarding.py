@@ -22,16 +22,16 @@ class GmlOnboarding(KiaraModule):
     ) -> ValueMapSchema:
 
         result = {
-            #"file": {
-             #   "type": "file",
-              #  "doc": "The source value (of type 'file').",
-               # "optional": False,
-            #},
-            "path": {
-                "type": "string",
-                "doc": "The path to the local file.",
+            "file": {
+                "type": "file",
+                 "doc": "The source value (of type 'file').",
                 "optional": False,
             },
+            # "path": {
+            #     "type": "string",
+            #     "doc": "The path to the local file.",
+            #     "optional": False,
+            # },
             "label":{
                 "type": "string",
                 "doc": "The node attribute that holds the 'label' information. Set this input to 'id' when there is no 'label' attribute in gml file.",
@@ -51,7 +51,7 @@ class GmlOnboarding(KiaraModule):
     
     def process(self, inputs, outputs):
 
-        input_file = inputs.get_value_data('path')
+        input_file = inputs.get_value_data('file') # input file is a 'FileModel' object
         gml_file= input_file
 
         #print(gml_file)
@@ -59,10 +59,10 @@ class GmlOnboarding(KiaraModule):
         #print(label)
 
         if label is None:
-            G = nx.read_gml(gml_file)
+            G = nx.read_gml(input_file.path) # 'file' has several convenience attributes of which here we need the 'path' one, which is the path to where it is stored in the kiara data store.. If you wanted only the text content, you could for example use the 'read_text utility' function.
             #print("no label")
         else:
-            G = nx.read_gml(gml_file, label=label)
+            G = nx.read_gml(input_file.path, label=label)
             #print("with label")
 
         network_data = NetworkData.create_from_networkx_graph(G)
