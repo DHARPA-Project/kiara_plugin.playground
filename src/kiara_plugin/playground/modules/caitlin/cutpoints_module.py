@@ -34,7 +34,7 @@ class CutPointsList(KiaraModule):
             },
             "cut_network": {
                 "type": "network_data",
-                "doc": "Updated network data with eigenvector ranking assigned as a node attribute."
+                "doc": "Updated network data with 'Yes' assigned as a node attribute to nodes that are cut-points."
             }
         }
 
