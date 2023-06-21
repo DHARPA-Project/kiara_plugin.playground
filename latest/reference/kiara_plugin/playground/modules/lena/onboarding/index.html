@@ -17,7 +17,7 @@
         <link rel="next" href="../../mariella/__init__/">
       
       <link rel="icon" href="../../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.26e3688c.min.css">
       
       
 
@@ -1054,7 +1054,7 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
 
 
         <details class="quote">
-          <summary>Source code in <code>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/kiara_plugin/playground/modules/lena/onboarding.py</code></summary>
+          <summary>Source code in <code>/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/kiara_plugin/playground/modules/lena/onboarding.py</code></summary>
           <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
@@ -1124,16 +1124,16 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
 
         <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="c1">#&quot;file&quot;: {</span>
-             <span class="c1">#   &quot;type&quot;: &quot;file&quot;,</span>
-              <span class="c1">#  &quot;doc&quot;: &quot;The source value (of type &#39;file&#39;).&quot;,</span>
-               <span class="c1"># &quot;optional&quot;: False,</span>
-            <span class="c1">#},</span>
-            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The path to the local file.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The source value (of type &#39;file&#39;).&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
             <span class="p">},</span>
+            <span class="c1"># &quot;path&quot;: {</span>
+            <span class="c1">#     &quot;type&quot;: &quot;string&quot;,</span>
+            <span class="c1">#     &quot;doc&quot;: &quot;The path to the local file.&quot;,</span>
+            <span class="c1">#     &quot;optional&quot;: False,</span>
+            <span class="c1"># },</span>
             <span class="s2">&quot;label&quot;</span><span class="p">:{</span>
                 <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The node attribute that holds the &#39;label&#39; information. Set this input to &#39;id&#39; when there is no &#39;label&#39; attribute in gml file.&quot;</span><span class="p">,</span>
@@ -1153,7 +1153,7 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
 
     <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
 
-        <span class="n">input_file</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+        <span class="n">input_file</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">)</span> <span class="c1"># input file is a &#39;FileModel&#39; object</span>
         <span class="n">gml_file</span><span class="o">=</span> <span class="n">input_file</span>
 
         <span class="c1">#print(gml_file)</span>
@@ -1161,10 +1161,10 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
         <span class="c1">#print(label)</span>
 
         <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">gml_file</span><span class="p">)</span>
+            <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">input_file</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="c1"># &#39;file&#39; has several convenience attributes of which here we need the &#39;path&#39; one, which is the path to where it is stored in the kiara data store.. If you wanted only the text content, you could for example use the &#39;read_text utility&#39; function.</span>
             <span class="c1">#print(&quot;no label&quot;)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">gml_file</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">input_file</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
             <span class="c1">#print(&quot;with label&quot;)</span>
 
         <span class="n">network_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -1198,7 +1198,7 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
   <div class="doc doc-contents ">
 
       <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/kiara_plugin/playground/modules/lena/onboarding.py</code></summary>
+        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/kiara_plugin/playground/modules/lena/onboarding.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
@@ -1226,16 +1226,16 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="c1">#&quot;file&quot;: {</span>
-         <span class="c1">#   &quot;type&quot;: &quot;file&quot;,</span>
-          <span class="c1">#  &quot;doc&quot;: &quot;The source value (of type &#39;file&#39;).&quot;,</span>
-           <span class="c1"># &quot;optional&quot;: False,</span>
-        <span class="c1">#},</span>
-        <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The path to the local file.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The source value (of type &#39;file&#39;).&quot;</span><span class="p">,</span>
             <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
         <span class="p">},</span>
+        <span class="c1"># &quot;path&quot;: {</span>
+        <span class="c1">#     &quot;type&quot;: &quot;string&quot;,</span>
+        <span class="c1">#     &quot;doc&quot;: &quot;The path to the local file.&quot;,</span>
+        <span class="c1">#     &quot;optional&quot;: False,</span>
+        <span class="c1"># },</span>
         <span class="s2">&quot;label&quot;</span><span class="p">:{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
             <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The node attribute that holds the &#39;label&#39; information. Set this input to &#39;id&#39; when there is no &#39;label&#39; attribute in gml file.&quot;</span><span class="p">,</span>
@@ -1263,7 +1263,7 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
   <div class="doc doc-contents ">
 
       <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/kiara_plugin/playground/modules/lena/onboarding.py</code></summary>
+        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/kiara_plugin/playground/modules/lena/onboarding.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
@@ -1296,7 +1296,7 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
   <div class="doc doc-contents ">
 
       <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/kiara_plugin/playground/modules/lena/onboarding.py</code></summary>
+        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/site-packages/kiara_plugin/playground/modules/lena/onboarding.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
@@ -1317,7 +1317,7 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
 <span class="normal">69</span>
 <span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
 
-    <span class="n">input_file</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+    <span class="n">input_file</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">)</span> <span class="c1"># input file is a &#39;FileModel&#39; object</span>
     <span class="n">gml_file</span><span class="o">=</span> <span class="n">input_file</span>
 
     <span class="c1">#print(gml_file)</span>
@@ -1325,10 +1325,10 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
     <span class="c1">#print(label)</span>
 
     <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">gml_file</span><span class="p">)</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">input_file</span><span class="o">.</span><span class="n">path</span><span class="p">)</span> <span class="c1"># &#39;file&#39; has several convenience attributes of which here we need the &#39;path&#39; one, which is the path to where it is stored in the kiara data store.. If you wanted only the text content, you could for example use the &#39;read_text utility&#39; function.</span>
         <span class="c1">#print(&quot;no label&quot;)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">gml_file</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="n">input_file</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
         <span class="c1">#print(&quot;with label&quot;)</span>
 
     <span class="n">network_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -1396,7 +1396,7 @@ Based on networkX deserialise GML file method: https://networkx.org/documentatio
     <script id="__config" type="application/json">{"base": "../../../../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../../../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../../../../../assets/javascripts/bundle.a51614de.min.js"></script>
       
     
   </body>
